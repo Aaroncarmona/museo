@@ -62,6 +62,17 @@
 				?><script>alert("No se pudo eliminar");</script><?php
 			}
 		}
+
+		public function getMuseo($id){
+			$con = new Conexion();
+			$con->conectar();
+			$sql = 'select m.imagen_mus,m.nombre_mus,d.id_del,d.delegacion,m.dir_mus,m.precio_mus,m.desc_mus from MUSEOS m inner join DELEGACIONES d on d.id_del = m.id_del where m.id_mus = ' . $id ;
+
+			$list = $con->query($sql);
+			
+				return $list;
+			
+		}
 	}
 
 ?>

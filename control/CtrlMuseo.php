@@ -106,13 +106,8 @@
 											<input type='submit' name="regMuseo" value='Dar de alta'/>
 										</td>
 									</tr>
-									<tr>
-										<td>
-											<input type='submit' value='Cancelar' />
-										</td>
-									</tr>
-								</form>
-							</table>
+								</table>
+							</form>
 						<?php
 						break;
 					case 'b':
@@ -123,7 +118,69 @@
 						}
 						break;
 					case 'm':
-						echo 'MODIFICAR';
+						$reg = mysqli_fetch_array($mus->getMuseo($_REQUEST['id']));
+						
+						?>
+
+						<form action="CtrlMuseo.php">
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Modificar museo
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='file' name='img' id='img' value='<?php echo '$reg[0]'; ?>'/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombre' id='nombre' placeholder='<?php echo $reg[1]; ?>' autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<select name='delegaciones' id='delegaciones' />
+											<option value='<?php echo $reg[2]; ?>'>
+												<?php echo $reg[3]; ?>
+											</option>
+												<?php
+													$list = $mus->listarDelegaciones();
+													while ($dato = mysqli_fetch_array($list)) {
+														echo "
+															<option value='$dato[0]'>$dato[1]</option>
+														";
+													}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='dir' id='dir' placeholder='<?php echo $reg[4]; ?>'/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='precio' id='precio' placeholder='<?php echo $reg[5]; ?>' />
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<textarea rows="6" placeholder='Descripcion' cols="50" name='desc' id='desc'><?php echo $reg[6]; ?></textarea>
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<input type='submit' name="modMuseo" value='Modificar'/>
+										</td>
+									</tr>
+								</table>
+							</form>
+						<?php
 						break;
 					default:
 						?>
@@ -149,6 +206,8 @@
 				}else{
 					?><script> window.location="CtrlMuseo.php?accion=a"; </script><?php
 				}
+			}else if(isset($_REQUEST['modMuseo'])){
+				
 			}
 		?>
 		<footer id="pie">
