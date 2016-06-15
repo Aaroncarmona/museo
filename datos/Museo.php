@@ -70,8 +70,29 @@
 
 			$list = $con->query($sql);
 			
-				return $list;
+			return $list;
+		}
+
+		public function actualizar($id,$imagen,$nombre,$desc,$del,$dir,$precio){
+			$con = new Conexion();
+			$con->conectar();
+			$msg = "SET ";
+			$msg .= ($imagen !== "" ) ? "imagen_mus = '$imagen'," : "" ;
+			$msg .= ($nombre !== "" ) ? "nombre_mus = '$nombre'," : "" ;
+			$msg .= ($desc !== "" ) ? "desc_mus = '$desc'," : "" ;
+			$msg .= ($del !== "" ) ? "id_del = $del," : "" ;
+			$msg .= ($dir !== "" ) ? "dir_mus = $dir, " : "" ;
+			$msg .= ($precio !== "" ) ? "precio_mus = $precio," : "" ;
+
+			$msg = substr($msg, 0 , strlen($msg)-1);
+
+			$sql = "UPDATE MUSEOS " . $msg . " WHERE id_mus = $id";
 			
+			$estado = $con->query($sql);
+
+			if ($estado) {
+				return $estado;
+			}
 		}
 	}
 

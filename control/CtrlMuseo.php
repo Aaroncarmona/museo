@@ -61,7 +61,7 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='file' name='img' id='img' value='a.png'/>
+											<input type='file' name='img' id='img' accept='image/*' required/>
 										</td>
 									</tr>
 									<tr>
@@ -123,6 +123,7 @@
 						?>
 
 						<form action="CtrlMuseo.php">
+								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
 								<table class="tablafrm" >
 									<tr>
 										<th>
@@ -131,7 +132,8 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='file' name='img' id='img' value='<?php echo '$reg[0]'; ?>'/>
+											<label>Archivo actual: <?php echo $reg[0]; ?></label>
+											<input type='file' name='img' id='img' accept='image/*'/>
 										</td>
 									</tr>
 									<tr>
@@ -186,6 +188,7 @@
 						?>
 						<script>
 							alert("No se reconoce esa accion");
+							window.location="../vista/administrador/gestionarMuseos.php";
 						</script>
 						<?php
 						break;
@@ -207,7 +210,24 @@
 					?><script> window.location="CtrlMuseo.php?accion=a"; </script><?php
 				}
 			}else if(isset($_REQUEST['modMuseo'])){
-				
+				$estado = $mus->actualizar(
+					$_REQUEST['id'],
+					$_REQUEST['img'],
+					$_REQUEST['nombre'],
+					$_REQUEST['desc'],
+					$_REQUEST['delegaciones'],
+					$_REQUEST['dir'],
+					$_REQUEST['precio']
+					);
+				if($estado){
+					?><script> 
+					alert("Se a actualizado la informacion");
+					window.location="../vista/administrador/gestionarMuseos.php"; </script><?php
+				}else{
+					?><script> 
+					alert("No se pudo actualizar la informacion");
+					window.location="../vista/administrador/gestionarMuseos.php"; </script><?php
+				}
 			}
 		?>
 		<footer id="pie">
