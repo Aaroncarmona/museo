@@ -1,4 +1,3 @@
-
 <?php 
 	session_start();
 	if(!isset($_SESSION['correo'])){
@@ -9,10 +8,13 @@
 		</script>
 		<?php
 	}else{
+		include("../datos/Museo.php");
+		$mus = new Museo();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../recursos/css/estilo.css">
 	<title>El buscando el chido de museos</title>
 </head>
@@ -38,51 +40,70 @@
 		<aside>
 			<ul id="menuAdmin">
 				<li>
-					<a href="../index.html">Cerrar Session</a>
+					<a href="../vista/administrador/gestionarMuseos.php">Regresar</a>
 				</li>
 			</ul>
 		</aside>	
 		<section id="principal">
 		<?php
+
 			if (isset($_REQUEST['accion'])) {
 				switch ($_REQUEST['accion']) {
 					case 'a':
 						/*include('../vista/administrador/Museos/agregar.php');*/
 						?>
 							<form action="CtrlMuseo.php">
-								<table class="tabla" >
-									<h4>Datos generales</h4>
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Registrar museo
+										</th>
+									</tr>
 									<tr>
 										<td>
-											<input type='file' name='img' id='img' />
+											<input type='file' name='img' id='img' value='a.png'/>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='text' placeholder='Nombre..'/>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type='text' name='desc' id='desc' placeholder='Descripcion..'/>
+											<input type='text' name='nombre' id='nombre' placeholder='Nombre..' required autofocus/>
 										</td>
 									</tr>
 									<tr>
 										<td>
 											<select name='delegaciones' id='delegaciones' />
-												<option value="1">mexico</option>
+											<option value='0'>Seleccione una delegacion..</option>
+												<?php
+													$list = $mus->listarDelegaciones();
+													while ($dato = mysqli_fetch_array($list)) {
+														echo "
+															<option value='$dato[0]'>$dato[1]</option>
+														";
+													}
+												?>
 											</select>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='number' name='precio' id='precio' placeholder='Precio..' />
+											<input type='text' name='dir' id='dir' placeholder='Direccion..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='precio' id='precio' placeholder='Precio..' required/>
 										</td>
 									</tr>
 
 									<tr>
 										<td>
-											<input type='submit' value='Dar de alta' />
+											<textarea rows="6" placeholder='Descripcion' cols="50" name='desc' id='desc' required></textarea>
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<input type='submit' name="regMuseo" value='Dar de alta'/>
 										</td>
 									</tr>
 									<tr>
@@ -95,7 +116,11 @@
 						<?php
 						break;
 					case 'b':
-						echo 'BAJAS';
+						if($mus->eliminar($_REQUEST['id'])){ 
+							?><script> 
+							window.location="../vista/administrador/gestionarMuseos.php"; 	
+							</script><?php
+						}
 						break;
 					case 'm':
 						echo 'MODIFICAR';
@@ -107,6 +132,22 @@
 						</script>
 						<?php
 						break;
+				}
+			}else if(isset($_REQUEST['regMuseo'])){
+				
+				$status = $mus->agregar(
+					$_REQUEST['img'],
+					$_REQUEST['nombre'],
+					$_REQUEST['desc'],
+					$_REQUEST['delegaciones'],
+					$_REQUEST['dir'],
+					$_REQUEST['precio']
+					);
+
+				if($status){
+					?><script> window.location="../vista/administrador/gestionarMuseos.php"; </script><?php
+				}else{
+					?><script> window.location="CtrlMuseo.php?accion=a"; </script><?php
 				}
 			}
 		?>

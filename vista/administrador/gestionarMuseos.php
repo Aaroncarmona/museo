@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+	session_start();
+
+	if(!isset($_SESSION['correo'])){
+		?>
+		<script>
+			alert("Tines que iniciar sesion, para entrar a esta pagina");
+			window.location="../frmInicioSesion.html";
+		</script>
+		<?php
+	}else{
+		include("../../datos/Museo.php");
+		$museo = new Museo();
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
@@ -42,9 +56,9 @@
 			<H2>Museos</H2>
 
 			<br/>
-			<table class="tabla">
+			<table class="tablaAdmG">
 				<tr>
-					<th colspan="6">
+					<th colspan="6" id="estAgre">
 						<a href="../../control/CtrlMuseo.php?accion=a">
 							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
 						</a>
@@ -56,32 +70,42 @@
 					<th>Delegacion</th>
 					<th colspan="3">Accion</th>
 				</tr>
-				<tr>
-					<th>Museo de la luz</th>
-					<th> </th>
-					<th> </th>
-					
-					<th>
-						<a href="../../control/CtrlMuseo.php?accion=b">
-							<img class="icono" src="../../recursos/imagenes/eliminar.png">
-						</a>
-					
-					</th>
-					
-					<th>
-						<a href="../../control/CtrlMuseo.php?accion=m">
-							<img class="icono" src="../../recursos/imagenes/editar.png"</th>
-						</a>
-					</th>
-					<th>
-						<a href="../../control/CtrlMuseo.php?accion=salas">
-							Salas
-						</a>
-					</th>
-           		</tr>
+
+				<!--consulta -->
+				<?php 
+					$list = $museo->listar();
+					while ($datos = mysqli_fetch_array($list)) {
+						 ?>
+						<tr>
+							<td><?php echo $datos[0]; ?></td>
+							<td><?php echo substr($datos[1], 0 , 100) . "....."; ?></td>
+							<td><?php echo $datos[2]; ?> </td>
+							
+							<td class="btnAccion">
+								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[3] ?>">
+									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
+								</a>
+							
+							</td>
+							
+							<td class="btnAccion">
+								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[3] ?>">
+									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
+								</a>
+							</td>
+
+							<td class="btnAccion">
+								<a href="../../control/CtrlMuseo.php?accion=salas&id=<?php echo $datos[3] ?>">
+									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas">
+								</a>
+							</td>
+		           		</tr>
+						<!--consulta -->
+						<?php
+				}
+
+				?>
 			</table>
-		
-           
 
 		</section>
 
@@ -93,3 +117,7 @@
 	</footer>
 	</body>
 </html>
+
+<?php
+	}
+?>

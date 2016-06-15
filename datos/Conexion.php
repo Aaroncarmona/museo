@@ -12,15 +12,7 @@
 			$this->contra = "";
 			$this->database = "museo";
 		}
-/*
-		function __construct($usuario,$contra){
-			$this->host = "localhost";
-			$this->usuario = $usuario;
-			$this->contra = $contra;
-			$this->database = "museo";
-			$this->con = null;
-		}*/
-
+		
 		public function conectar(){
 			$this->con = mysqli_connect($this->host,$this->usuario,$this->contra,$this->database);
 			if(!$this->con){
