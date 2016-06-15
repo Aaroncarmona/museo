@@ -1,0 +1,396 @@
+/*FORMATO GENERAL*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 , h3 , h4{
+	text-align:center;
+}
+h2{
+	text-align:center;
+	text-shadow:lightgray 4px 4px 5px;
+	color: black;
+	font-size: 1.3em;
+
+	
+}
+
+p , span{
+	margin:10px;
+	text-align: left;
+
+}
+/*FIN FORMATO GENERAL*/
+
+/*HEADER*/
+h1#tituloH1Header{
+	text-shadow: lightgray 4px 4px 3px;
+}
+
+header{
+	border-top: 5px solid #2b8f79;
+}
+
+header > table {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;	
+}
+
+.henav,.henav2{
+	width: 20%;
+}
+
+.henav{
+	background : #2b8f79;
+	border-radius: 0px 25px 25px 0px;
+}
+/*FIN HEADER*/
+
+
+/*NAVEGACION*/
+nav#navegacion{
+	text-align: center;
+	background: #2b8f79;
+	box-shadow: gray 0px 5px 15px;
+}
+
+
+nav#navegacion > ul > li{
+	list-style: none;
+	display: inline-block;
+
+}
+
+nav#navegacion > ul > li >a{
+	color: white;
+	text-decoration: none;
+	border-radius: 10px;
+	padding: 0px 15px;
+	font-size: 1.5em;
+	text-shadow: rgb(0,0,100) 2px 2px 3px;
+	
+}
+#navegacion li a:hover{
+   text-shadow: rgb(0,0,150) 5px 5px 5px;
+  text-align: center;
+  }
+/*FIN NAVEGACION*/
+
+
+/*DIV BUSCADOR*/
+
+div#buscadorPrincipal{
+	width: 90%;
+	margin: 15px auto;
+}
+
+/*FIN DIV BUSCADO*/
+
+
+div#contenedor{
+	width: 90%;
+	margin: 15px auto;
+	text-align: center;
+	
+}
+
+input#busqueda {
+	text-align: center;
+	height: 35px;
+	font-size: 1.2em;
+}
+
+input.subBuscar{
+	width: 15%;
+	padding: 10px 0px;
+	margin-left: 5px;
+
+}
+
+footer#pie{
+	color: white;
+	width: 100%;
+	min-height: 5px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #2b8f79;
+	border-top: 1px solid gray;
+}
+
+img#logo{
+	width: 3cm;
+}
+
+section, aside {
+	display: inline-block;
+	vertical-align: top;
+}
+
+aside#lateral{
+	width:20%;
+	min-height:150px;
+
+	
+}
+section#principal{
+	width: 59%;
+	padding-top: 0px;
+	margin-left: 70px;
+
+}
+
+/*FORMULARIO DE BUSQUEDA*/
+form#buscar{
+	width: 100%;
+	text-align: center;
+}
+
+form#buscar > input[type="text"]{
+	width: 80%;
+}
+
+form#buscar > input[type="submit"]{
+	width: 15%;
+}
+/*FIN FORMULARIO DE BUSQUEDA*/
+table.listaMuseo{
+	width: 100%;
+}
+
+div#contenedorAdministrador{
+	margin: 30px auto;
+	width: 90%;
+	min-height: 150px;
+
+}
+
+div#contenedorAdministrador > aside , div#contenedorAdministrador > section{
+	vertical-align: top;	
+	display: inline-block;
+	width: 75%;
+	min-height: 20px;
+	margin:0px;
+
+}
+
+div#contenedorAdministrador > aside{
+	width: 24%;
+	
+}
+ul#menuAdmin > li >a{
+	color:black;
+	text-decoration: none;
+	border-radius:10px;
+	padding: 0px 15px;
+	font-size: 1.3em;
+	text-shadow: rgb(0,0,100) 2px 2px 2px;
+	
+}
+
+#menuAdmin > li {
+	width: 100%;
+	padding: 15px;
+	text-decoration: none;
+}
+
+#menuAdmin > li:hover{
+	background: #99C1B3;
+}
+/*Para el carrusel de las imagenes de parte del administrador */
+.slider{
+	width: 30%;
+	margin: auto;
+	overflow: hidden;
+}
+.slider{
+   width: 69%;
+	min-height: 150px;
+	margin: 0px auto;
+
+}
+.slider ul{
+	display: flex;
+	padding: 0;
+	width: 400%;
+
+animation:cambio 20s infinite ;
+
+}
+.slider li{
+	width: 100%;
+	list-style: none;
+}
+.slider img{
+	width: 100%;
+}
+@keyframes cambio{
+	0% { margin-left: 0;}
+	20% { margin-left: 0;}
+
+	25%{margin-left: -100%;}
+	45%{margin-left: -100%;}
+
+	50%{margin-left: -200%;}
+	70%{margin-left: -200%;}
+
+	75%{margin-left: -300%;}
+	100%{margin-left: -300%;}
+
+
+/*Para el carrusel de las imagenes de parte del administrador */
+}
+
+.galeria{ /*imagenes del carrusel*/
+	height:200px;
+
+}
+
+/*REVISAR ESTA PARTE DEL CODIGO YA QUE SE VOLVIO A DAR ESTILO AL LOGIN*/
+/*INICIAR SESION*/
+table.iniciarSesion{
+	margin: 25px auto;
+	width: 300px;
+	border-collapse: collapse;
+	background: #2b8f79;
+	border: 10px solid #2b8f79;
+}
+
+table.iniciarSesion tr td input , table.iniciarSesion tr td select{
+	width: 300px;
+	padding: 5px;
+}
+
+table.iniciarSesion tr td select , table.iniciarSesion tr  td input[type="submit"]{
+	width: 315px;
+}
+
+.form{/*del login  */
+ border-style:solid;
+ border-spacing:10px;
+ text-align:center;
+  margin: 5px auto;
+  padding:20px;
+
+}
+
+.boton{/*Para los botenes de los formularios que sean mas pequeños */
+  font-size:8px;
+  font-family:Verdana,Helvetica;
+  font-weight:bold;
+color:white;
+  background:#638cb5;
+  border:0px;
+  width:80px;
+  height:19px;
+ }
+ .tam{
+ 	width: 100px;
+ 	height: 100px;
+ }
+ .icono{
+ 	width: 20px;
+	height:20px;
+	
+ }
+ .tabla{
+	border-spacing:10px;
+  	text-align:left;
+  	margin:0px auto;
+  	margin-bottom: 15px; 	
+  	width: 100%;
+}
+
+table.tabla  tr  td{
+	margin-left: 4px;
+
+}
+
+td.tdMuseoImg {
+	width: 200px;	
+}
+
+
+td.tdMuseo > h4{
+	width: 100%;
+	padding-bottom: 5px;
+	text-align: left;
+	border-bottom: 1px solid black;
+}
+
+td.tdMuseo > h4 > a{
+	color: black;
+	text-decoration: none;
+}
+
+td.tdMuseo{
+	border-radius: 15px;
+}
+
+.columna{
+height:10px;
+font-family: Helvetica, Arial, Helvetica, sans-serif;
+font-size: 10pt;
+background.color:white;
+
+}
+th{
+  border-style:groove;
+  background-color:white;
+  text-align:center;
+  float:center;
+  color: #000000;
+  }
+.museos{
+	float: left;
+	width:100%;
+	height:100px; 
+}
+.ec-stars-wrapper {
+	/* Espacio entre los inline-block (los hijos, los `a`) 
+	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+	float: left;
+	font-size: 0;
+	/* Podríamos quitarlo, 
+		pero de esta manera (siempre que no le demos padding), 
+		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+		también se esté haciendo hover a alguna estrella */
+	display: inline-block;
+}
+.ec-stars-wrapper a {
+	text-decoration: none;
+	display: inline-block;
+	/* Volver a dar tamaño al texto */
+	font-size: 32px;
+	font-size: 2rem;
+	color: #888;
+}
+
+.ec-stars-wrapper:hover a {
+	color: rgb(255, 255, 0);
+}
+/*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+.ec-stars-wrapper > a:hover ~ a {
+	color: #888;
+}
+  /*hecho por Mitzi*/
+
+ /*EVALUACIONES -- AARON CARMONA*/
+div.grafica{
+
+}
+
+#container, #sliders {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+#container {
+    height: 400px; 
+}
+/*EVALUCAIONES-- AARON CARMONA*/

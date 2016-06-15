@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+
+	<link rel="stylesheet" type="text/css" href="recursos/css/estilo.css">
+		<title>ACEM - INDEX	</title>
+</head>
+<body>
+	<header>
+		<table>
+			<tr>
+				<td class="henav" style="background : #2b8f79;border-radius: 0px 25px 25px 0px;"><a href="index.html"><img id="logo" src="recursos/imagenes/logo/logo.png"></a></td>
+				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
+				<td class="henav">
+					
+				</td>
+			</tr>
+		</table>
+		<nav id="navegacion">
+			<ul>
+						<li>
+					<a href="index.html">Inicio  <img class="icono"src="recursos/imagenes/home.png"></a>
+				</li>
+
+				<li>
+					<p><b>/</b></p>
+				</li>
+				<li>
+					<a href="quienes.html">Quienes somos  <img class="icono"src="recursos/imagenes/quienes.png"></a>
+				</li>
+				<li>
+					<p><b>/</b></p>
+				</li>
+				<li>
+					<a href="acem.html">Para que sirve ACEM  <img class="icono"src="recursos/imagenes/sirve.png"></a>
+				</li>
+				<li>
+					<p><b>/</b></p>
+				</li>
+				<li>
+					<a href="museo.html">Evaluar  <img class="icono"src="recursos/imagenes/museo.png"></a>
+				</li>
+				
+				
+				
+			</ul>
+		</nav>
+	</header>
+	
+
+	<div id="contenedor">
+		<h1 text-aling="center">Evaluar Museo</h1 	>
+		 <form action="evaluar.html">
+		 <table class ="form">
+		 <tr>
+			<td class="evaluar">Correo:</td>
+		 	<td class="evaluar"><input type="email" name="correo" id="correo" placeholder="ejemplo@gmail.com"></td>
+		 </tr>	
+		 <tr>
+		 	<td class="evaluar">Comentario</td>
+		 	<td class="evaluar"><textarea placeholder="Escriba aqui su comentario..."></textarea></td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">Evaluación  del 0 al 5</td>
+		 	<td class="evaluar">
+		 	<input type="radio" name="calificacion" value="cero">0
+		 	<input type="radio" name="calificacion" value="uno">1
+		 	<input type="radio" name="calificacion" value="dos">2
+		 	<input type="radio" name="calificacion" value="tres">3
+		 	<input type="radio" name="calificacion" value="cuatro">4
+		 	<input type="radio" name="calificacion" value="cinco">5
+		 	</td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">Edad:</td>
+		 	<td class="evaluar"><input type="number" pattern="[0-199]{3}" name="edad" id="edad" title="inserte edad no mayor a 100" placeholder="0-100"></td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">¿Usted a visitado antes el museo?</td>
+		 	<td class="evaluar">
+		 	<input type="radio" name="visitado" value="si">Si
+		 	<input type="radio" name="visitado" value="no">No
+		 	</td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">Tipo visitante</td>
+		 	<td class="evaluar"><select>
+		 		<option value="seleccione">Seleccione...</option>
+		 	</select></td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">Sexo</td>
+		 	<td class="evaluar">
+		 	<input type="radio" name="hombre" value="hombre">Hombre
+		 	<input type="radio" name="mujer" value="mujer">Mujer
+		 	</td>
+		 </tr>
+		 <tr>
+		 	<td class="evaluar">Lugar donde nos visitas</td>
+		 	<td class="evaluar"><select>
+		 		<option value="seleccion">Seleccione...</option>
+		 	</select></td>
+		 </tr>
+		 <tr>
+		 <td></td>
+		  <td><input type="submit" value="ENVIAR" class="boton"></td>
+		  </tr>
+		 </table>
+		 </form>
+		
+		
+		<aside id="lateral">
+
+			
+		</aside>
+		
+		<section id="principal">
+	
+           
+	
+
+		</section>
+
+
+
+
+	</div>
+	
+
+	<footer id="pie">
+		<i>Derechos Reservados©2016 EagleCode</i> 
+		<a href="vista/frmInicioSesion.html">Webmaster</a>
+	</footer>
+</body>
+</html>
