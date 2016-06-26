@@ -95,7 +95,7 @@
 							</td>
 
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=salas&id=<?php echo $datos[3] ?>">
+								<a href="gestionarSalas.php">
 									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas">
 								</a>
 							</td>
