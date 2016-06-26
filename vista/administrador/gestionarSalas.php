@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 	session_start();
 
 	if(!isset($_SESSION['correo'])){
@@ -9,8 +9,8 @@
 		</script>
 		<?php
 	}else{
-		include("../../datos/Museo.php");
-		$museo = new Museo();
+		include("../../datos/Sala.php");
+		$sala = new Sala();
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,41 +40,36 @@
 		<aside>
 			<ul id="menuAdmin">
 				<li>
-					<a href="inicioAdministrador.php">Regresar</a>
+					<a href="gestionarMuseos.php">Regresar</a>
 				</li>
-				<li>
-					<a href="gestionarMuseos.html ">Gestionar Museos</a>
-				</li>
-				<li><a href="gestionarEmpleados.html">Gestionar Empleados</a></li>
-				<li><a href="estadistica.php">Estadisticas</a></li>
 				<li>
 					<a href="../../index.html">Cerrar Session</a>
 				</li>
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>Museos</H2>
+			<H2>Salas</H2>
 
 			<br/>
 			<table class="tablaAdmG">
 				<tr>
 					<th colspan="6" id="estAgre">
-						<a href="../../control/CtrlMuseo.php?accion=a">
+						<a href="../../control/CtrlSala.php?accion=a">
 							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
 						</a>
 					</th>
 				</tr>
 				<tr>
-					<th>Museo</th>
+					<th>Sala</th>
 					<th>Descripcion</th>
-					<th>Delegacion</th>
+					<th>Museos</th>
 					<th colspan="3">Accion</th>
 				</tr>
 
 				<!--consulta -->
 				<?php 
-					$list = $museo->listar();
-					while ($datos = mysqli_fetch_array($list)) {
+					$list = $sala->listar();
+			         while ($datos = mysqli_fetch_array($list)) {
 						 ?>
 						<tr>
 							<td><?php echo $datos[0]; ?></td>
@@ -82,21 +77,15 @@
 							<td><?php echo $datos[2]; ?> </td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlSala.php?accion=b&id=<?php echo $datos[3] ?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
 							
 							</td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlSala.php?accion=m&id=<?php echo $datos[3] ?>">
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
-								</a>
-							</td>
-
-							<td class="btnAccion">
-								<a href="gestionarSalas.php">
-									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas">
 								</a>
 							</td>
 		           		</tr>

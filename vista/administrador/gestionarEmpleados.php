@@ -9,8 +9,8 @@
 		</script>
 		<?php
 	}else{
-		include("../../datos/Museo.php");
-		$museo = new Museo();
+		include("../../datos/GestionEmpleado.php");
+		$gesEmpleado = new GestionEmpleado();
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@
 				<li>
 					<a href="gestionarMuseos.html ">Gestionar Museos</a>
 				</li>
-				<li><a href="gestionarEmpleados.html">Gestionar Empleados</a></li>
+				<li><a href="gestionarEmpleados.php">Gestionar Empleados</a></li>
 				<li><a href="estadistica.php">Estadisticas</a></li>
 				<li>
 					<a href="../../index.html">Cerrar Session</a>
@@ -53,50 +53,44 @@
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>Museos</H2>
+			<H2>EMPLEADOS</H2>
 
 			<br/>
 			<table class="tablaAdmG">
 				<tr>
 					<th colspan="6" id="estAgre">
-						<a href="../../control/CtrlMuseo.php?accion=a">
+						<a href="../../control/CtrlEmpleado.php?accion=a">
 							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
 						</a>
 					</th>
 				</tr>
 				<tr>
-					<th>Museo</th>
-					<th>Descripcion</th>
-					<th>Delegacion</th>
+					<th>Nombre</th>
+					<th>Apellido Paterno</th>
+					<th>Apellido Materno</th>
 					<th colspan="3">Accion</th>
 				</tr>
 
 				<!--consulta -->
 				<?php 
-					$list = $museo->listar();
+					$list = $gesEmpleado->listar();
 					while ($datos = mysqli_fetch_array($list)) {
 						 ?>
 						<tr>
 							<td><?php echo $datos[0]; ?></td>
-							<td><?php echo substr($datos[1], 0 , 100) . "....."; ?></td>
+							<td><?php echo $datos[1]; ?></td>
 							<td><?php echo $datos[2]; ?> </td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlEmpleado.php?accion=b&id=<?php echo $datos[5] ?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
 							
 							</td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlEmpleado.php?accion=m&id=<?php echo $datos[5] ?>">
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
-								</a>
-							</td>
-
-							<td class="btnAccion">
-								<a href="gestionarSalas.php">
-									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas">
 								</a>
 							</td>
 		           		</tr>
