@@ -39,7 +39,7 @@
 				<li>
 					<a href="gestionarMuseos.php">Gestionar Museos</a>
 				</li>
-				<li><a href="gestionarEmpleados.php">Gestionar empleados</a></li>
+				<li><a href="gestionarEmpleados.html">Gestionar empleados</a></li>
 				<li><a href="estadistica.php">Estadisticas</a></li>
 				<li>
 					<a href="../../index.html">Cerrar Session</a>
