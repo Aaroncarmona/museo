@@ -16,7 +16,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
-	<title>El buscando el chido de museos</title>
+	<title>ACEM -- MUSEOS</title>
 </head>
 <body>
 	<header>
@@ -39,23 +39,16 @@
 
 		<aside>
 			<ul id="menuAdmin">
-				<li>
-					<a href="inicioAdministrador.php">Regresar</a>
-				</li>
-				<li>
-					<a href="gestionarMuseos.html ">Gestionar Museos</a>
-				</li>
-				<li><a href="gestionarEmpleados.html">Gestionar Empleados</a></li>
-				<li><a href="estadistica.php">Estadisticas</a></li>
-				<li>
-					<a href="../../index.html">Cerrar Session</a>
-				</li>
+				<li><a href="inicioAdministrador.php">Inicio Administrador</a></li>
+				<li><a href="gestionarEmpleados.php">Gestionar Empleados</a></li>
+				<li><a href="estadistica.php">Ver estadisticas</a></li>
+				<li><a href="../../index.html">Cerrar Session</a></li>
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>Museos</H2>
-
-			<br/>
+			<h1>Administracion de Museos</h1>
+			<br>
+			<hr>
 			<table class="tablaAdmG">
 				<tr>
 					<th colspan="6" id="estAgre">
@@ -86,20 +79,20 @@
 							
 							<td class="btnAccion">
 								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[4] ?>">
-									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
+									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar"/>
 								</a>
 							
 							</td>
 							
 							<td class="btnAccion">
 								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[4] ?>">
-									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
+									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar"/>
 								</a>
 							</td>
 
 							<td class="btnAccion">
 								<a href="gestionarSalas.php">
-									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas">
+									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas"/>
 								</a>
 							</td>
 		           		</tr>

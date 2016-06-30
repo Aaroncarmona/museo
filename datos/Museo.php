@@ -108,7 +108,7 @@
 				$video = substr($texto,$pos1);
 				$video = substr($video, 1 , strpos($video,"}") -1 );
 				
-				$cadena = substr($texto,0,$pos1) . '<video class="vidMuseo" src="'.$video.'"/>' . substr($texto,$pos2+1);
+				$cadena = substr($texto,0,$pos1) . '<video class="vidMuseo" ><source src="'.$video.'" type="video/mp4"></video>' .substr($texto,$pos2+1);
 				
 				return $this->revisar($cadena);
 

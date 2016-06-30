@@ -15,9 +15,9 @@
 	<header>
 		<table>
 			<tr>
-				<td class="henav" style="background : #2b8f79;border-radius: 0px 25px 25px 0px;"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
+				<td class="henav"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
-				<td class="henav">
+				<td class="henav2">
 					
 				</td>
 			</tr>
@@ -32,17 +32,10 @@
 
 		<aside>
 			<ul id="menuAdmin">
-				<li>
-					<a href="inicioAdministrador.html ">Inicio   </a>
-				</li>
-				<li>
-					<a href="gestionarMuseos.html ">Gestionar Museos </a>
-				</li>
-				<li><a href="gestionarEmpleados.html">Gestionar Empleados</a></li>
-				<li><a href="evaluaciones.php">Evaluaciones</a></li>
-				<li>
-					<a href="../../index.html">Cerrar Session</a>
-				</li>
+				<li><a href="inicioAdministrador.php">Inicio Administrador</a></li>
+				<li><a href="gestionarMuseos.php">Gestionar Museos </a></li>
+				<li><a href="gestionarEmpleados.php">Gestionar Empleados</a></li>
+				<li><a href="../../index.html">Cerrar Session</a></li>
 			</ul>
 		</aside>	
 		<section id="principal">
@@ -63,12 +56,11 @@
 	</div>
 	
 		<footer id="pie">
-		<p><i>Derechos Reservados©2016 EagleCode</i></p>
+		<i>Derechos Reservados©2016 EagleCode</i>
 	</footer>
 	</body>
-	<?php
-	}else{
-		echo "No tienes privilegios para ver la pagina. Inicia sesion";
-	}
-	?>
 </html>
+
+<?php
+	}
+?>

@@ -39,17 +39,10 @@
 
 		<aside>
 			<ul id="menuAdmin">
-				<li>
-					<a href="inicioAdministrador.php">Regresar</a>
-				</li>
-				<li>
-					<a href="gestionarMuseos.html ">Gestionar Museos</a>
-				</li>
-				<li><a href="gestionarEmpleados.php">Gestionar Empleados</a></li>
-				<li><a href="estadistica.php">Estadisticas</a></li>
-				<li>
-					<a href="../../index.html">Cerrar Session</a>
-				</li>
+				<li><a href="inicioAdministrador.php">Inicio Administrador</a></li>
+				<li><a href="gestionarMuseos.php">Gestionar Museos</a></li>
+				<li><a href="estadistica.php">Ver estadistica</a></li>
+				<li><a href="../../index.html">Cerrar Session</a></li>
 			</ul>
 		</aside>	
 		<section id="principal">
