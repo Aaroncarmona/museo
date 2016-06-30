@@ -16,7 +16,7 @@
 		public function listar(){
 			$con = new Conexion();
 			$con->conectar();
-			$sql = 'select m.nombre_mus,m.desc_mus,d.delegacion,m.id_mus from MUSEOS m inner join DELEGACIONES d on d.id_del = m.id_del';
+			$sql = 'select m.nombre_mus,m.imagen_mus,m.desc_mus,d.delegacion,m.id_mus from MUSEOS m inner join DELEGACIONES d on d.id_del = m.id_del';
 			$list = $con->query($sql);
 			return $list;
 		}
@@ -79,20 +79,45 @@
 			$msg = "SET ";
 			$msg .= ($imagen !== "" ) ? "imagen_mus = '$imagen'," : "" ;
 			$msg .= ($nombre !== "" ) ? "nombre_mus = '$nombre'," : "" ;
-			$msg .= ($desc !== "" ) ? "desc_mus = '$desc'," : "" ;
+			$msg .= ($desc !== "" ) ? "desc_mus = '". $this->revisar($desc) . "'," : "" ;
 			$msg .= ($del !== "" ) ? "id_del = $del," : "" ;
-			$msg .= ($dir !== "" ) ? "dir_mus = $dir, " : "" ;
+			$msg .= ($dir !== "" ) ? "dir_mus = $dir," : "" ;
 			$msg .= ($precio !== "" ) ? "precio_mus = $precio," : "" ;
 
 			$msg = substr($msg, 0 , strlen($msg)-1);
 
 			$sql = "UPDATE MUSEOS " . $msg . " WHERE id_mus = $id";
-			
+
 			$estado = $con->query($sql);
 
 			if ($estado) {
 				return $estado;
 			}
+		}
+
+		/*	REVISAR INSERTA LOS VIDEOS QUE SE ENCUENTREN EN HTML {}
+			ESTE METODO ES RECURSIVO Y TERMINA SU CICLO CUANDO NO ENCUENTRE {
+
+		*/
+		public function revisar($texto){
+			
+			if(strstr($texto,'{') && strstr($texto,'}')){ 
+				$pos1 = strpos($texto,"{");
+				$pos2 = strpos($texto,"}");
+
+				$video = substr($texto,$pos1);
+				$video = substr($video, 1 , strpos($video,"}") -1 );
+				
+				$cadena = substr($texto,0,$pos1) . '<video class="vidMuseo" src="'.$video.'"/>' . substr($texto,$pos2+1);
+				
+				return $this->revisar($cadena);
+
+			}else{
+
+				return $texto;
+
+			}
+
 		}
 	}
 

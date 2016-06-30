@@ -66,6 +66,7 @@
 				</tr>
 				<tr>
 					<th>Museo</th>
+					<th>Imagen</th>
 					<th>Descripcion</th>
 					<th>Delegacion</th>
 					<th colspan="3">Accion</th>
@@ -76,20 +77,22 @@
 					$list = $museo->listar();
 					while ($datos = mysqli_fetch_array($list)) {
 						 ?>
+						 
 						<tr>
 							<td><?php echo $datos[0]; ?></td>
-							<td><?php echo substr($datos[1], 0 , 100) . "....."; ?></td>
-							<td><?php echo $datos[2]; ?> </td>
+							<td><img  class = "imgMus" src="../../recursos/imagenes/museos/<?php echo $datos[0]  . "/" . $datos[1]; ?>" alt = "Museo"/></td>
+							<td><?php echo substr($datos[2], 0 , 100) . "....."; ?></td>
+							<td><?php echo $datos[3]; ?> </td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[4] ?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
 							
 							</td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[3] ?>">
+								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[4] ?>">
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
 								</a>
 							</td>

@@ -122,23 +122,36 @@
 						
 						?>
 
-						<form action="CtrlMuseo.php">
+						<form action="CtrlMuseo.php" enctype="multipart/form-data">
 								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
 								<table class="tablafrm" >
 									<tr>
 										<th>
-											Modificar museo
+											<h2>Modificar museo</h2>
+											<h6><?php echo $reg[1]; ?></h6>
 										</th>
 									</tr>
 									<tr>
 										<td>
+											
+											<img  class = "imgMus-100" src="../recursos/imagenes/museos/<?php echo $reg[1]  . "/" . $reg[0]; ?>" alt = "Museo"/>
 											<label>Archivo actual: <?php echo $reg[0]; ?></label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											
 											<input type='file' name='img' id='img' accept='image/*'/>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='nombre' id='nombre' placeholder='<?php echo $reg[1]; ?>' autofocus/>
+											<input type='text' name='nombre' id='nombre' placeholder='NOMBRE: <?php echo $reg[1]; ?>' autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<textarea rows="10" placeholder='CUERPO DE LA PAGINA: <?php echo $reg[6]; ?>' cols="50" name='desc' id='desc'></textarea>
 										</td>
 									</tr>
 									<tr>
@@ -160,18 +173,12 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='dir' id='dir' placeholder='<?php echo $reg[4]; ?>'/>
+											<input type='text' name='dir' id='dir' placeholder='DIRECCION : <?php echo $reg[4]; ?>'/>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='number' name='precio' id='precio' placeholder='<?php echo $reg[5]; ?>' />
-										</td>
-									</tr>
-
-									<tr>
-										<td>
-											<textarea rows="6" placeholder='Descripcion' cols="50" name='desc' id='desc'><?php echo $reg[6]; ?></textarea>
+											<input type='number' name='precio' id='precio' placeholder='PRECIO : $<?php echo $reg[5]; ?>' />
 										</td>
 									</tr>
 
