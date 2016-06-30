@@ -567,3 +567,7 @@ img.imgMus-100{
 video.vidMuseo{
 	width: 100%;
 }
+
+span.txtBorrar{
+	font-size: 2em;
+}

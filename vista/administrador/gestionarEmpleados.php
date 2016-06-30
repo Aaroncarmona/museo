@@ -9,14 +9,13 @@
 		</script>
 		<?php
 	}else{
-		include("../../datos/GestionEmpleado.php");
-		$gesEmpleado = new GestionEmpleado();
+		include("../../control/CtrlEmpleado.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
-	<title>El buscando el chido de museos</title>
+	<title>ACEM -- EMPLEADOS</title>
 </head>
 <body>
 	<header>
@@ -46,13 +45,182 @@
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>EMPLEADOS</H2>
+			<h1>Administracion de Empleados</h1>
+			<br><hr>
+			<?php
+				$control = new CtrlEmpleado();				
+				if(isset($_REQUEST['accion'])){
+					switch($_REQUEST['accion']){
+						case 'a':
+						/*include('../vista/administrador/Museos/agregar.php');*/
+						?>
+							<form action="../../control/CtrlEmpleado.php">
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Registrar empleado
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombreEmp' id='nombreEmp' placeholder='Nombre..' required autofocus/>
+										</td>
+									</tr>
+									<tr>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='ape_pat' id='ape_pat' placeholder='Apellido Paterno..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='ape_mat' id='ape_mat' placeholder='Apellido Materno..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='telefono' id='telefono' placeholder='Telefono..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='mail' name='correo' id='correo' placeholder='Correo..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='contrasena' id='contrasena' placeholder='Contrasena..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='submit' name="regEmpleado" value='Dar de alta'/>
+										</td>
+									</tr>
+								</table>
+							</form>
+						<?php
+						break;
+					case 'b':
+						
+						$lista = $control->listarId($_REQUEST['id']);
 
-			<br/>
+						?>
+							<form action="../../control/CtrlEmpleado.php">
+								<table class="tablafrm" >
+									<tr>
+										<th colspan="2">
+											Eliminar empleado
+										</th>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Nombre: <?php echo $lista->getNombre_emp(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Apellido P: <?php echo $lista->getApellido_pat(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Apellido M: <?php echo $lista->getApellido_mat(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Telefono: <?php echo $lista->getTelefono_emp(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Correo: <?php echo $lista->getCorreo_emp(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="submit" name="bajaEmpleado" value="Aceptar"/>
+										</td>
+										<td>
+											<input type="submit" name="bajaEmpleadoCan" value="Cancelar"/>
+										</td>
+									</tr>
+								</table>
+								<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>" />
+							</form>
+						<?php
+						break;
+					case 'm':
+
+						$lista = $control->listarId($_REQUEST['id']);
+						
+						?>
+
+						<form action="CtrlEmpleado.php">
+								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Modificar empleado
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombreEmp' id='nombreEmp' placeholder='<?php echo $lista->getNombre_emp(); ?>' autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='ape_pat' id='ape_pat' placeholder='<?php echo $lista->getApellido_pat(); ?>' />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='ape_mat' id='ape_mat' placeholder='<?php echo $lista->getApellido_mat(); ?>' />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='telefono' id='telefono' placeholder='<?php echo $lista->getTelefono_emp(); ?>' />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='mail' name='correo' id='correo' placeholder='<?php echo $lista->getCorreo_emp(); ?>' />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='password' name='contrasena' id='contrasena' placeholder='La contraseña solo se cambia' autocomplete="off"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='submit' name="modEmpleado" value='Modificar'/>
+										</td>
+									</tr>
+								</table>
+							</form>
+						<?php
+						break;
+					default:
+						?>
+						<script>
+							alert("No se reconoce esa accion");
+							window.location="../vista/administrador/gestionarEmpleados.php";
+						</script>
+						<?php
+						break;
+					}
+				}else{
+					$emp = $control->listar();
+			?>
 			<table class="tablaAdmG">
 				<tr>
 					<th colspan="6" id="estAgre">
-						<a href="../../control/CtrlEmpleado.php?accion=a">
+						<a href="gestionarEmpleados.php?accion=a">
 							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
 						</a>
 					</th>
@@ -63,37 +231,27 @@
 					<th>Apellido Materno</th>
 					<th colspan="3">Accion</th>
 				</tr>
-
-				<!--consulta -->
-				<?php 
-					$list = $gesEmpleado->listar();
-					while ($datos = mysqli_fetch_array($list)) {
-						 ?>
-						<tr>
-							<td><?php echo $datos[0]; ?></td>
-							<td><?php echo $datos[1]; ?></td>
-							<td><?php echo $datos[2]; ?> </td>
-							
-							<td class="btnAccion">
-								<a href="../../control/CtrlEmpleado.php?accion=b&id=<?php echo $datos[5] ?>">
-									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
-								</a>
-							
-							</td>
-							
-							<td class="btnAccion">
-								<a href="../../control/CtrlEmpleado.php?accion=m&id=<?php echo $datos[5] ?>">
-									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
-								</a>
-							</td>
-		           		</tr>
-						<!--consulta -->
-						<?php
-				}
-
+				<?php
+				foreach ($emp as $key => $value) { 
 				?>
+				<tr>
+					<td><?php echo $emp[$key]->getNombre_emp(); ?></td>
+					<td><?php echo $emp[$key]->getApellido_pat(); ?></td>
+					<td><?php echo $emp[$key]->getApellido_mat(); ?></td>
+					<td class="btnAccion">
+						<a href="gestionarEmpleados.php?accion=b&id=<?php echo $emp[$key]->getId_emp(); ?>">
+							<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
+						</a>
+					</td>
+					<td class="btnAccion">
+						<a href="gestionarEmpleados.php?accion=m&id=<?php echo $emp[$key]->getId_emp(); ?>">
+							<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
+						</a>
+					</td>
+				</tr>
+				<?php } ?>
 			</table>
-
+			<?php } ?>
 		</section>
 
 	

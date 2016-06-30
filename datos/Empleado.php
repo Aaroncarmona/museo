@@ -1,5 +1,6 @@
 <?php 
 	class Empleado{
+		private $id_emp;
 		private $nombre_emp;
 		private $apellido_pat;
 		private $apellido_mat;
@@ -7,8 +8,21 @@
 		private $correo_emp;
 		private $contra_emp;
 
-		public function __construct(){
+		public function iniciar($nombre_emp,$apellido_pat,$apellido_mat,$telefono_emp,$correo_emp,$contra_emp){
+			$this->nombre_emp = $nombre_emp;
+			$this->apellido_pat = $apellido_pat;
+			$this->apellido_mat = $apellido_mat;
+			$this->telefono_emp = $telefono_emp;
+			$this->correo_emp = $correo_emp;
+			$this->contra_emp = $contra_emp;
+		}
 
+		public function getId_emp(){
+			return $this->id_emp;
+		}
+
+		public function setId_emp($id_emp){
+			$this->id_emp = $id_emp;
 		}
 
 		public function getNombre_emp(){
