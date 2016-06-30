@@ -158,7 +158,7 @@
 						
 						?>
 
-						<form action="CtrlEmpleado.php">
+						<form action="../../control/CtrlEmpleado.php">
 								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
 								<table class="tablafrm" >
 									<tr>
@@ -168,32 +168,32 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='nombreEmp' id='nombreEmp' placeholder='<?php echo $lista->getNombre_emp(); ?>' autofocus/>
+											<input type='text' name='nombreEmp' id='nombreEmp' placeholder='Nombre: <?php echo $lista->getNombre_emp(); ?>' autofocus/>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='ape_pat' id='ape_pat' placeholder='<?php echo $lista->getApellido_pat(); ?>' />
+											<input type='text' name='ape_pat' id='ape_pat' placeholder='Apellido P: <?php echo $lista->getApellido_pat(); ?>' />
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='ape_mat' id='ape_mat' placeholder='<?php echo $lista->getApellido_mat(); ?>' />
+											<input type='text' name='ape_mat' id='ape_mat' placeholder='Apellido M: <?php echo $lista->getApellido_mat(); ?>' />
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='number' name='telefono' id='telefono' placeholder='<?php echo $lista->getTelefono_emp(); ?>' />
+											<input type='number' name='telefono' id='telefono' placeholder='Telefono: <?php echo $lista->getTelefono_emp(); ?>' />
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='mail' name='correo' id='correo' placeholder='<?php echo $lista->getCorreo_emp(); ?>' />
+											<input type='mail' name='correo' id='correo' placeholder='Correo: <?php echo $lista->getCorreo_emp(); ?>' />
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type='password' name='contrasena' id='contrasena' placeholder='La contraseña solo se cambia' autocomplete="off"/>
+											<input type='password' name='contrasena' id='contrasena' placeholder='La contraseña solo se cambia'/>
 										</td>
 									</tr>
 									<tr>
@@ -201,6 +201,7 @@
 											<input type='submit' name="modEmpleado" value='Modificar'/>
 										</td>
 									</tr>
+									<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>" />
 								</table>
 							</form>
 						<?php
