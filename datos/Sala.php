@@ -1,95 +1,36 @@
-<?php 
-	include('Conexion.php');
-	class Sala
-	{
-		private $nombre_sala;
-		private $desc_sala;
+<?php
+	class Sala{
+		private $id_sala;
 		private $id_mus;
-	
+		private $nombre_sala;
 
-		public function __construct(){
-
-		}
-
-		public function listar(){
-			$con = new Conexion();
-			$con->conectar();
-			$sql = 'select s.nombre_sala,s.desc_sala,
-            m.nombre_mus,s.id_sala from SALAS s 
-            inner join MUSEOS m on m.id_mus = s.id_mus'; 
-            
-			$list = $con->query($sql);
-			return $list;
-		}
-
-		public function agregar($id_mus,$nombre_sala,$desc_sala){
+		public function iniciar($id_mus,$nombre_sala){
 			$this->id_mus = $id_mus;
-            $this->nombre_sala = $nombre_sala;
-			$this->desc_sala = $desc_sala;
-			
-			$con = new Conexion();
-			$con->conectar();
-
-			$sql = "insert into SALAS(id_mus,nombre_sala,desc_sala) values('$this->id_mus','$this->nombre_sala','$this->desc_sala');";
-		
-			$val = $con->query($sql);
-			if($val){
-				?> <script>alert("Se agrego correctamente");</script> <?php
-				return $val;
-			}else{
-				?><script>alert("Ya existe ese registro");</script><?php
-			}
+			$this->nombre_sala = $nombre_sala;
 		}
 
-		public function listarMuseos(){
-			$con = new Conexion();
-			$con->conectar();
-			$sql = "select id_mus, nombre_mus from MUSEOS";
-			$list = $con->query($sql);
-			return $list;
+		public function getId_sala(){
+			return $this->id_sala;
 		}
 
-		public function eliminar($id){
-			$con = new Conexion();
-			$con->conectar();
-			$sql = "delete from SALAS where id_sala = $id";
-			$estado = $con->query($sql);
-			if($estado){
-				return $estado;
-			}else{
-				?><script>alert("No se pudo eliminar");</script><?php
-			}
+		public function getId_mus(){
+			return $this->id_mus;
 		}
 
-		public function getSala($id){
-			$con = new Conexion();
-			$con->conectar();
-			$sql = 'select s.nombre_sala,s.desc_sala,m.id_mus,m.nombre_mus
-from SALAS s inner join MUSEOS m on m.id_mus = s.id_mus
-where s.id_sala = ' . $id;
-			$list = $con->query($sql);
-			
-			return $list;
+		public function getNombre_sala(){
+			return $this->nombre_sala;
 		}
 
-		public function actualizar($id,$id_mus,$nombre_sala,$desc_sala){
-			$con = new Conexion();
-			$con->conectar();
-			$msg = "SET ";
-			$msg .= ($nombre_sala !== "" ) ? "nombre_sala = '$nombre_sala'," : "" ;
-			$msg .= ($desc_sala !== "" ) ? "desc_sala = '$desc_sala'," : "" ;
-			
-			
-			$msg = substr($msg, 0 , strlen($msg)-1);
+		public function setId_sala($id_sala){
+			$this->id_sala = $id_sala;
+		}
 
-			$sql = "UPDATE SALAS " . $msg . " WHERE id_sala = $id";
-			
-			$estado = $con->query($sql);
+		public function setId_mus($id_mus){
+			$this->id_mus = $id_mus;
+		}
 
-			if ($estado) {
-				return $estado;
-			}
+		public function setNombre_sala($nombre_sala){
+			$this->nombre_sala = $nombre_sala;
 		}
 	}
-
 ?>

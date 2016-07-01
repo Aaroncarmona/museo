@@ -1,204 +1,147 @@
-
-<?php 
-	session_start();
-	if(!isset($_SESSION['correo'])){
-		?>
-		<script>
-			alert("Tines que iniciar sesion, para entrar a esta pagina");
-			window.location="../vista/frmInicioSesion.html";
-		</script>
-		<?php
-	}else{
-		include("../datos/Sala.php");
-		$sala = new Sala();
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../recursos/css/estilo.css">
-	<title>El buscando el chido de museos</title>
-</head>
-<body>
-	<header>
-		<table>
-			<tr>
-				<td class="henav"><a href="index.html"><img id="logo" src="../recursos/imagenes/logo/logo.png"></a></td>
-				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
-				<td class="henav2">
-					
-				</td>
-			</tr>
-			</table>
-	</header>
-	<nav id="navegacion">
-		<br/>
-		<br/>
-	</nav>
-
-	<div id="contenedorAdministrador">
-
-		<aside>
-			<ul id="menuAdmin">
-				<li>
-					<a href="../vista/administrador/gestionarMuseos.php">Regresar</a>
-				</li>
-			</ul>
-		</aside>	
-		<section id="principal">
-		<?php
-
-			if (isset($_REQUEST['accion'])) {
-				switch ($_REQUEST['accion']) {
-					case 'a':
-						/*include('../vista/administrador/Museos/agregar.php');*/
-						?>
-							<form action="CtrlSala.php">
-								<table class="tablafrm" >
-									<tr>
-										<th>
-											Registrar sala
-										</th>
-									</tr>
-									<tr>
-										<td>
-											<select name='id_mus' id='id_mus' />
-											<option value='0'>Seleccione un museo..</option>
-												<?php
-													$list = $sala->listarMuseos();
-												    while ($dato = mysqli_fetch_array($list)) {
-														echo "
-															<option value='$dato[0]'>$dato[1]</option>
-														";
-													}
-												?>
-											</select>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type='text' name='nombre_sala' id='nombre_sala' placeholder=' Nombre de la sala..' required autofocus/>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<textarea rows="6" placeholder='Descripcion sala' cols="50" name='desc_sala' id='desc_sala' required></textarea>
-										</td>
-									</tr>
-
-									<tr>
-										<td>
-											<input type='submit' name="regSala" value='Dar de alta'/>
-										</td>
-									</tr>
-								</table>
-							</form>
-						<?php
-						break;
-					case 'b':
-						if($sala->eliminar($_REQUEST['id'])){ 
-							?><script> 
-							window.location="../vista/administrador/gestionarSalas.php"; 	
-							</script><?php
-						}
-						break;
-					case 'm':
-						$reg = mysqli_fetch_array($sala->getSala($_REQUEST['id']));
-						
-						?>
-
-						<form action="CtrlSala.php">
-							<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
-								<table class="tablafrm" >
-									<tr>
-										<th>
-											Modificar sala
-										</th>
-									</tr>
-									<tr>
-										<td>
-											<label>Archivo actual: <?php echo $reg[0]; ?></label>
-											<input type='text' name='nombre_sala' id='nombre_sala' placeholder='<?php echo $reg[1]; ?>' autofocus/>
-										</td>
-									</tr>
-										<tr>
-										<td>
-											<textarea rows="6" placeholder='Descripcion sala' cols="50" name='desc_sala' id='desc_sala'></textarea>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<select name='id_mus' id='id_mus' />
-											<option value='<?php echo $reg[3]; ?>'>
-												<?php echo $reg[3]; ?>
-											</option>
-												<?php
-													$list = $sala->listarMuseos();
-													while ($dato = mysqli_fetch_array($list)) {
-														echo "
-															<option value='$dato[0]'>$dato[1]</option>
-														";
-													}
-												?>
-											</select>
-										</td>
-									</tr>
-
-									<tr>
-										<td>
-											<input type='submit' name="modSala" value='Modificar'/>
-										</td>
-									</tr>
-								</table>
-							</form>
-						<?php
-						break;
-					default:
-						?>
-						<script>
-							alert("No se reconoce esa accion");
-							window.location="../vista/administrador/gestionarSalas.php";
-						</script>
-						<?php
-						break;
-				}
-			}else if(isset($_REQUEST['regSala'])){
-				
-				$status = $sala->agregar(
-					$_REQUEST['id_mus'],
-					$_REQUEST['nombre_sala'],
-					$_REQUEST['desc_sala']
-					
-					);
-
-				if($status){
-					?><script> window.location="../vista/administrador/gestionarSalas.php"; </script><?php
-				}else{
-					?><script> window.location="CtrlSala.php?accion=a"; </script><?php
-				}
-			}else if(isset($_REQUEST['modSala'])){
-				$estado = $sala->actualizar(
-					$_REQUEST['id'],
-					$_REQUEST['id_mus'],
-					$_REQUEST['nombre_sala'],
-					$_REQUEST['desc_sala']
-					);
-				if($estado){
-					?><script> 
-					alert("Se a actualizado la informacion");
-					window.location="../vista/administrador/gestionarSalas.php"; </script><?php
-				}else{
-					?><script> 
-					alert("No se pudo actualizar la informacion");
-					window.location="../vista/administrador/gestionarSalas.php"; </script><?php
-				}
-			}
-		?>
-		<footer id="pie">
-		<i>Derechos Reservados©2016 EagleCode</i>
-	</footer>
-	</body>
-</html>
 <?php
+
+	class CtrlSala{
+
+		public function registrar($sala){
+			$con = new Conexion();
+			$con->conectar();
+
+			$sql = "INSERT INTO SALAS(id_mus,nombre_sala) VALUES(".
+					$sala->getId_mus().
+				",'".$sala->getNombre_sala().
+				"')";
+
+			$val = $con->query($sql);
+
+			if($val){
+				?> <script>alert("Se agrego conectamente");</script> <?php
+				return $val;
+			}else{
+				?><script>alert("Ya existe ese registro");</script><?php
+			}
+
+		}
+
+		public function eliminar($sala){
+			$con = new Conexion();
+			$sql = "delete from SALAS where id_mus = ".$sala->getId_mus()." and id_sala = ".$sala->getId_sala().";";
+			echo $sql;
+			$con->conectar();
+
+			$con->query($sql);
+		}
+
+		public function actualizar($sala){
+			$con = new Conexion();
+			$con->conectar();
+			if($sala->getNombre_sala() != ""){
+				$sql = "UPDATE SALAS SET nombre_sala = '".$sala->getNombre_sala()."' where id_mus = " . $sala->getId_mus() . " and id_sala = " . $sala->getId_sala() . ";";
+				?><script>alert("<?php echo $sql;?>");</script><?php
+				$con->query($sql);
+			}
+			
+		}
+
+		public function listar($id){
+			include("../../datos/Conexion.php");
+			include("../../datos/Sala.php");
+			
+			$con = new Conexion();
+			$sala = null;
+
+			$i = 0;
+			
+			$con->conectar();
+			/*$sql = "SELECT  m.nombre_mus, s.nombre_sala , d.cuerpo FROM MUSEOS m INNER JOIN (SALAS s inner join DETALLE_MUS_SAL d ON d.id_sala = s.id_sala ) ON d.id_mus = m.id_mus WHERE m.id_mus =". $_REQUEST['id']. ";";*/
+			
+			$sql = "select id_sala,id_mus,nombre_sala from SALAS where id_mus = " . $id .";";
+			
+			$lista = $con->query($sql);
+
+			
+			
+			while($dato = mysqli_fetch_array($lista)){
+				$sala[$i]= new Sala();
+				$sala[$i]->iniciar($dato[1],$dato[2]);
+				$sala[$i]->setId_sala($dato[0]);
+				$i++;
+			}
+			return $sala;
+		}
+
+		public function listarId($id,$id_sal){
+			include("../../datos/Conexion.php");
+			include("../../datos/Sala.php");
+			
+			$con = new Conexion();
+
+			$i = 0;
+			
+			$con->conectar();
+			/*$sql = "SELECT  m.nombre_mus, s.nombre_sala , d.cuerpo FROM MUSEOS m INNER JOIN (SALAS s inner join DETALLE_MUS_SAL d ON d.id_sala = s.id_sala ) ON d.id_mus = m.id_mus WHERE m.id_mus =". $_REQUEST['id']. ";";*/
+			
+			$sql = "select id_sala,id_mus,nombre_sala from SALAS where id_mus = " . $id ." and id_sala = ".$id_sal.";";
+			
+			$dato = $con->query($sql);
+			$dato = mysqli_fetch_array($dato);
+			$sala = new Sala();
+			
+			$sala->iniciar($dato[1],$dato[2]);
+			$sala->setId_sala($dato[0]);
+			
+			return $sala;
+		}
 	}
+?>
+
+
+<?php
+if(isset($_REQUEST['btnReg'])){
+	include("../datos/Sala.php");
+	include("../datos/Conexion.php");
+
+	$control = new CtrlSala();
+	$sala = new Sala();
+	
+	$sala->iniciar(
+		$_REQUEST['id'],
+		$_REQUEST['nombreSal']	
+	);
+
+	$status = $control->registrar($sala); //REGISTRAR
+
+	if($status){
+		?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
+	}else{
+		?><script> window.location="../vista/administrador/gestionarSalas.php?accion=a"; </script><?php
+	}
+}else if(isset($_REQUEST['bajaSala'])){
+	include("../datos/Conexion.php");
+	include("../datos/Sala.php");
+
+	$control = new CtrlSala();
+	$sala = new Sala();
+	$sala->setId_sala($_REQUEST['idSal']);
+	$sala->setId_mus($_REQUEST['id']);
+	
+	$control->eliminar($sala);
+
+	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
+}else if(isset($_REQUEST['bajaSalaCan'])){
+	include("../datos/Sala.php");
+	$sala = new Sala();
+	$sala->setId_sala($_REQUEST['idsal']);
+	$sala->setId_mus($_REQUEST['id']);
+	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
+}else if(isset($_REQUEST['modSala'])){
+	include("../datos/Sala.php");
+	include("../datos/Conexion.php");
+
+	$control = new CtrlSala();
+	$sala = new Sala();
+	$sala->iniciar($_REQUEST['id'],$_REQUEST['nombreSal']);
+	$sala->setId_sala($_REQUEST['idsal']);
+	$control->actualizar($sala);
+	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
+}
 ?>

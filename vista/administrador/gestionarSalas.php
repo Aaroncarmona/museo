@@ -9,14 +9,14 @@
 		</script>
 		<?php
 	}else{
-		include("../../datos/Sala.php");
-		$sala = new Sala();
+		
+		include("../../control/CtrlSala.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
-	<title>El buscando el chido de museos</title>
+	<title>ACEM -- SALAS</title>
 </head>
 <body>
 	<header>
@@ -48,54 +48,147 @@
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>Salas</H2>
+			<h1>Administracion de Salas</h1>
+			<br><hr>
+			<?php 
+				$control = new CtrlSala();
+				if(isset($_REQUEST['accion'])){
+					switch($_REQUEST['accion']){
+						case 'a':
+						?>
+							<form action="../../control/CtrlSala.php">
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Registro de sala
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombreSal' id='nombreSal' placeholder='Nombre..' required autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='submit' name="btnReg" value='Registrar Sala' />
+										</td>
+									</tr>
+								</table>
+								<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>"/>
+								<!--<input type="hidden" name="idSal" value="<?php echo $_REQUEST['idsal'] ?>"/> -->
+							</form>
+						<?php
+						break;
+						case 'b':
+						$lista = $control->listarId($_REQUEST['id'],$_REQUEST['idsal']);
 
-			<br/>
+						?>
+							<form action="../../control/CtrlSala.php">
+								<table class="tablafrm" >
+									<tr>
+										<th colspan="2">
+											Eliminar Sala
+										</th>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar">Nombre: <?php echo $lista->getNombre_sala(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="submit" name="bajaSala" value="Aceptar"/>
+										</td>
+										<td>
+											<input type="submit" name="bajaSalaCan" value="Cancelar"/>
+										</td>
+									</tr>
+								</table>
+								<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>" />
+								<input type="hidden" name="idSal" value="<?php echo $_REQUEST['idsal'] ?>"/>
+							</form>
+						<?php
+						break;
+						case 'm':
+
+						$lista = $control->listarId($_REQUEST['id'],$_REQUEST['idsal']);
+						
+						?>
+
+						<form action="../../control/CtrlSala.php">
+								
+								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
+								<input type="hidden" name="idsal" id="idsal" value='<?php echo $_REQUEST['idsal'] ?>'/>
+
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Modificar Sala
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombreSal' id='nombreSal' placeholder='Nombre: <?php echo $lista->getNombre_sala(); ?>' autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='submit' name="modSala" value='Modificar'/>
+										</td>
+									</tr>
+									<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>" />
+								</table>
+							</form>
+						<?php
+						break;
+					}
+				}else{
+
+					$salas = $control->listar($_REQUEST['id']);
+			?>
 			<table class="tablaAdmG">
 				<tr>
-					<th colspan="6" id="estAgre">
-						<a href="../../control/CtrlSala.php?accion=a">
+					<th colspan="7" id="estAgre">
+						<a href="gestionarSalas.php?accion=a&id=<?php echo $_REQUEST['id']?>">
 							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
 						</a>
 					</th>
 				</tr>
 				<tr>
 					<th>Sala</th>
-					<th>Descripcion</th>
-					<th>Museos</th>
 					<th colspan="3">Accion</th>
 				</tr>
 
 				<!--consulta -->
-				<?php 
-					$list = $sala->listar();
-			         while ($datos = mysqli_fetch_array($list)) {
+						<?php 
+						if($salas[0] == null){
+							echo "<td colspan = '4'>No existen registros</td>";
+
+						}else{
+						foreach ($salas as $key => $value) {
+
 						 ?>
 						<tr>
-							<td><?php echo $datos[0]; ?></td>
-							<td><?php echo substr($datos[1], 0 , 100) . "....."; ?></td>
-							<td><?php echo $datos[2]; ?> </td>
+							<td><?php echo $salas[$key]->getNombre_Sala(); ?> </td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlSala.php?accion=b&id=<?php echo $datos[3] ?>">
+								<a href="gestionarSalas.php?accion=b&id=<?php echo $salas[$key]->getId_mus();?>&idsal=<?php echo $salas[$key]->getId_sala();?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
 							
 							</td>
 							
 							<td class="btnAccion">
-								<a href="../../control/CtrlSala.php?accion=m&id=<?php echo $datos[3] ?>">
+								<a href="gestionarSalas.php?accion=m&id=<?php echo $salas[$key]->getId_mus();?>&idsal=<?php echo $salas[$key]->getId_sala();?>">
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
 								</a>
 							</td>
 		           		</tr>
 						<!--consulta -->
-						<?php
-				}
-
-				?>
+						<?php } //FOREACH
+						}//IF ?>
 			</table>
-
+			<?php } ?>
 		</section>
 
 	
@@ -107,6 +200,4 @@
 	</body>
 </html>
 
-<?php
-	}
-?>
+<?php } ?>

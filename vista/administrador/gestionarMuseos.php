@@ -68,7 +68,8 @@
 				<!--consulta -->
 				<?php 
 					$list = $museo->listar();
-					while ($datos = mysqli_fetch_array($list)) {
+
+						while ($datos = mysqli_fetch_array($list)) {
 						 ?>
 						 
 						<tr>
@@ -91,7 +92,7 @@
 							</td>
 
 							<td class="btnAccion">
-								<a href="gestionarSalas.php">
+								<a href="gestionarSalas.php?id=<?php echo $datos[4] ?>">
 									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas"/>
 								</a>
 							</td>

@@ -79,3 +79,8 @@ insert into DETALLE_TIPO_EMPLEADOS(id_emp,id_temp,fecha) values(1,1,'10/10/10');
 
 /*FIN CONTROL DE USUARIOS*/
 
+/*INSERT SALAS*/
+insert into SALAS(id_sala,id_mus,nombre_sala) values(1,1,"SALA 1"),(2,1,"SALA 2");
+
+
+INSERT INTO DETALLE_MUS_SAL(id_mus,id_sala,titulo,cuerpo) values(1,1,"este no va a ir","esta sala fue para todas las personas blablabla"),(1,2,"esto se va a quitar","soy el chido");
