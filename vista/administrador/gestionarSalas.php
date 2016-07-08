@@ -85,7 +85,7 @@
 						<?php
 						break;
 						case 'b':
-						$lista = $control->listarId($_REQUEST['id'],$_REQUEST['idsal']);
+						$lista = $control->listarSalaId($_REQUEST['id'],$_REQUEST['idsal']);
 
 						?>
 							<form action="../../control/CtrlSala.php">
@@ -121,7 +121,7 @@
 						break;
 						case 'm':
 
-						$lista = $control->listarId($_REQUEST['id'],$_REQUEST['idsal']);
+						$lista = $control->listarSalaId($_REQUEST['id'],$_REQUEST['idsal']);
 						
 						?>
 
@@ -159,7 +159,7 @@
 					}
 				}else{
 
-					$salas = $control->listar($_REQUEST['id']);
+					$salas = $control->listarSala($_REQUEST['id']);
 			?>
 			<table class="tablaAdmG">
 				<tr>

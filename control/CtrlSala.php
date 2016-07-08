@@ -2,7 +2,7 @@
 
 	class CtrlSala{
 
-		public function registrar($sala){
+		public function registrarSala($sala){
 			$con = new Conexion();
 			$con->conectar();
 
@@ -22,7 +22,7 @@
 
 		}
 
-		public function eliminar($sala){
+		public function eliminarSala($sala){
 			$con = new Conexion();
 			$sql = "delete from SALAS where id_mus = ".$sala->getId_mus()." and id_sala = ".$sala->getId_sala().";";
 			echo $sql;
@@ -31,7 +31,7 @@
 			$con->query($sql);
 		}
 
-		public function actualizar($sala){
+		public function actualizarSala($sala){
 			$con = new Conexion();
 			$con->conectar();
 			$sql = "";
@@ -45,7 +45,7 @@
 			$con->query($sql);
 		}
 
-		public function listar($id){
+		public function listarSala($id){
 			include("../../datos/Conexion.php");
 			include("../../datos/Sala.php");
 			
@@ -72,7 +72,7 @@
 			return $sala;
 		}
 
-		public function listarId($id,$id_sal){
+		public function listarSalaId($id,$id_sal){
 			include("../../datos/Conexion.php");
 			include("../../datos/Sala.php");
 			
@@ -112,7 +112,7 @@ if(isset($_REQUEST['btnReg'])){
 		$_REQUEST['cuerpoSal']	
 	);
 
-	$status = $control->registrar($sala); //REGISTRAR
+	$status = $control->registrarSala($sala); //REGISTRAR
 
 	if($status){
 		?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
@@ -128,7 +128,7 @@ if(isset($_REQUEST['btnReg'])){
 	$sala->setId_sala($_REQUEST['idSal']);
 	$sala->setId_mus($_REQUEST['id']);
 	
-	$control->eliminar($sala);
+	$control->eliminarSala($sala);
 
 	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
 }else if(isset($_REQUEST['bajaSalaCan'])){
@@ -145,7 +145,7 @@ if(isset($_REQUEST['btnReg'])){
 	$sala = new Sala();
 	$sala->iniciar($_REQUEST['id'],$_REQUEST['nombreSal'],$_REQUEST['cuerpoSal']);
 	$sala->setId_sala($_REQUEST['idsal']);
-	$control->actualizar($sala);
+	$control->actualizarSala($sala);
 	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php
 }
 ?>
