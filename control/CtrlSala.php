@@ -14,7 +14,7 @@
 			$val = $con->query($sql);
 
 			if($val){
-				?> <script>alert("Se agrego conectamente");</script> <?php
+				/*?> <script>alert("Se agrego conectamente");</script> <?php*/
 				return $val;
 			}else{
 				?><script>alert("Ya existe ese registro");</script><?php

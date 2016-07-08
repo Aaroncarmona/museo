@@ -39,7 +39,7 @@
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>Evaluaciones</H2>
+			<h1>Evaluaciones</h1><br/><hr/><br/>
 			<form action="evaluaciones.php">
 			  <fieldset>
 			    <legend>Filtros de busqueda</legend>

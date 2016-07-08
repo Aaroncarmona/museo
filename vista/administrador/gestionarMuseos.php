@@ -36,15 +36,15 @@
 	</nav>
 
 	<div id="contenedorAdministrador">
-
 		<aside>
 			<ul id="menuAdmin">
 				<li><a href="inicioAdministrador.php">Inicio Administrador</a></li>
 				<li><a href="gestionarEmpleados.php">Gestionar Empleados</a></li>
 				<li><a href="estadistica.php">Ver estadisticas</a></li>
-				<li><a href="../../index.html">Cerrar Session</a></li>
+				<li><a href="../../control/CtrlInicioSesion.php?sesion=close">Cerrar Session</a></li>
 			</ul>
 		</aside>	
+
 		<section id="principal">
 			<h1>Administracion de Museos</h1>
 			<br>

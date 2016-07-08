@@ -98,6 +98,7 @@
 											<input type='submit' name="regEmpleado" value='Dar de alta'/>
 										</td>
 									</tr>
+									<!--AGREGAR LA SELECCION-->
 								</table>
 							</form>
 						<?php

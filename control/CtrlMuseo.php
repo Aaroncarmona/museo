@@ -228,7 +228,7 @@
 					);
 				if($estado){
 					?><script> 
-					alert("Se a actualizado la informacion");
+					/*alert("Se a actualizado la informacion");*/
 					window.location="../vista/administrador/gestionarMuseos.php"; </script><?php
 				}else{
 					?><script> 

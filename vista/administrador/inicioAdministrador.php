@@ -35,6 +35,7 @@
 	<div id="contenedorAdministrador">
 
 		<aside>
+			
 			<ul id="menuAdmin">
 				<li><a href="gestionarMuseos.php">Gestionar Museos</a></li>
 				<li><a href="gestionarEmpleados.php">Gestionar empleados</a></li>
@@ -43,14 +44,14 @@
 			</ul>
 		</aside>	
 		<section id="principal">
-			<H2>BIENVENIDO ADMINISTRADOR...</H2>
-			<br/>
+			<h1>Bienvenido Administrador</h1>
+			<br/> <hr/> <br/>
             <div class="slider">
 		<ul>
-			<li><img class="galeria" src="../../recursos/imagenes/img1.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img2.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img3.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img4.jpg" alt=""></li>
+			<li><img class="galeria" src="../../recursos/imagenes/img1.png" alt=""></li>
+			<li><img class="galeria" src="../../recursos/imagenes/img2.png" alt=""></li>
+			<li><img class="galeria" src="../../recursos/imagenes/img3.png" alt=""></li>
+			<li><img class="galeria" src="../../recursos/imagenes/img4.png" alt=""></li>
      </ul>
 		</div>
 

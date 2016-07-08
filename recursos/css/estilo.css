@@ -7,13 +7,16 @@
 h1 , h3 , h4{
 	text-align:center;
 }
+
 h2{
 	text-align:center;
-	text-shadow:lightgray 4px 4px 5px;
 	color: black;
 	font-size: 1.3em;
+}
 
-	
+hr{
+	width: 50%;
+	margin: 0px auto;
 }
 
 p , span{
@@ -73,7 +76,8 @@ nav#navegacion > ul > li >a{
 	
 }
 #navegacion li a:hover{
-   text-shadow: rgb(0,0,150) 5px 5px 5px;
+  text-shadow: black 5px 5px 5px;
+
   text-align: center;
   }
 /*FIN NAVEGACION*/
@@ -93,7 +97,6 @@ div#contenedor{
 	width: 90%;
 	margin: 15px auto;
 	text-align: center;
-	
 }
 
 input#busqueda {
@@ -181,52 +184,52 @@ div#contenedorAdministrador > aside{
 	width: 24%;
 	
 }
+
+#menuAdmin{
+}
+
 ul#menuAdmin > li >a{
 	color:black;
 	text-decoration: none;
-	border-radius:10px;
-	padding: 0px 15px;
+	padding-left: 10px;
 	font-size: 1.3em;
-	text-shadow: rgb(0,0,100) 2px 2px 2px;
-	
 }
 
 #menuAdmin > li {
 	width: 100%;
-	padding: 15px;
-	text-decoration: none;
+	padding: 10px 0px;
+	list-style: none;
 }
 
 #menuAdmin > li:hover{
+	border-left: 4px orange solid;
 	background: #99C1B3;
 }
-/*Para el carrusel de las imagenes de parte del administrador */
-.slider{
-	width: 30%;
-	margin: auto;
-	overflow: hidden;
-}
-.slider{
-   width: 69%;
-	min-height: 150px;
-	margin: 0px auto;
 
+/*Para el carrusel de las imagenes de parte del administrador */
+
+.slider{
+   	width: 80%;
+	overflow: hidden;
+	margin: 0px auto;
 }
+
 .slider ul{
 	display: flex;
 	padding: 0;
 	width: 400%;
-
-animation:cambio 20s infinite ;
-
+	animation:cambio 20s infinite ;
 }
+
 .slider li{
 	width: 100%;
 	list-style: none;
 }
+
 .slider img{
 	width: 100%;
 }
+
 @keyframes cambio{
 	0% { margin-left: 0;}
 	20% { margin-left: 0;}
@@ -239,14 +242,11 @@ animation:cambio 20s infinite ;
 
 	75%{margin-left: -300%;}
 	100%{margin-left: -300%;}
-
-
-/*Para el carrusel de las imagenes de parte del administrador */
+	/*Para el carrusel de las imagenes de parte del administrador */
 }
 
 .galeria{ /*imagenes del carrusel*/
-	height:200px;
-
+	/*altura*/
 }
 
 /*REVISAR ESTA PARTE DEL CODIGO YA QUE SE VOLVIO A DAR ESTILO AL LOGIN*/
@@ -373,14 +373,14 @@ color:white;
 	}
 
 	table.tablaAdmG tr td.btnAccion:hover {
-background: rgba(226,226,226,1);
-background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(24%, rgba(223,223,223,0)), color-stop(50%, rgba(219,219,219,0)), color-stop(51%, rgba(209,209,209,0)), color-stop(84%, rgba(239,239,239,0)), color-stop(100%, rgba(254,254,254,1)));
-background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );	
+		background: rgba(226,226,226,1);
+		background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(24%, rgba(223,223,223,0)), color-stop(50%, rgba(219,219,219,0)), color-stop(51%, rgba(209,209,209,0)), color-stop(84%, rgba(239,239,239,0)), color-stop(100%, rgba(254,254,254,1)));
+		background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
+		background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
+		background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
+		background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );	
 	}
 
 
