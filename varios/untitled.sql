@@ -6,7 +6,8 @@ use museo;
 create table TIPO_EMPLEADO(
 	id_temp int(1) not null AUTO_INCREMENT,
 	tipo_emp varchar(30) not null,
-	primary key(id_temp)
+	primary key(id_temp),
+	unique(tipo_emp)
 );
 
 create table EMPLEADOS(
@@ -17,7 +18,8 @@ create table EMPLEADOS(
 	telefono_emp varchar(11) not null,
 	correo_emp varchar(30) not null,
 	contra_emp varchar(30) not null,
-	primary key(id_emp)
+	primary key(id_emp),
+	unique(correo_emp)
 );
 
 
@@ -32,7 +34,8 @@ create table DETALLE_TIPO_EMPLEADOS(
 create table TIPO_VISITANTE(
 	id_tvis int(1) not null AUTO_INCREMENT,
 	tipo_tvis varchar(20) not null,
-	primary key(id_tvis)
+	primary key(id_tvis),
+	unique(tipo_tvis)
 );
 
 create table DELEGACIONES(
@@ -50,18 +53,20 @@ create table MUSEOS(
 	dir_mus varchar(50) not null,
 	precio_mus numeric(4,1) not null,
 	primary key(id_mus),
-	foreign key(id_del) references DELEGACIONES(id_del)
+	foreign key(id_del) references DELEGACIONES(id_del),
+	unique(nombre_mus)
 );
-
 
 create table SALAS(
 	id_sala int(2) not null AUTO_INCREMENT,
 	id_mus int(2) not null,
 	nombre_sala varchar(30) not null,
-	primary key(id_sala),
-	foreign key(id_mus) references MUSEOS(id_mus)
+	cuerpo_sala blob not null,
+	primary key(id_sala,id_mus),
+	foreign key(id_mus) references MUSEOS(id_mus),
+	unique(id_mus,nombre_sala)
 );
-
+/*
 create table DETALLE_MUS_SAL(
 	id_mus int(2) not null,
 	id_sala int(2) not null,
@@ -70,7 +75,7 @@ create table DETALLE_MUS_SAL(
 	primary key(id_mus,id_sala),
 	foreign key(id_mus) references MUSEOS(id_mus),
 	foreign key(id_sala) references SALAS(id_sala)
-);
+);*/
 
 create table ESTADOS(
 	id_est int(2) not null AUTO_INCREMENT,
@@ -113,3 +118,5 @@ create table HORARIOS(
 );
 
 /*esto es opcional*/
+
+DROP TABLE DETALLE_MUS_SAL;

@@ -6,13 +6,13 @@
 			$con = new Conexion();
 			$con->conectar();
 
-			$sql = "INSERT INTO SALAS(id_mus,nombre_sala) VALUES(".
+			$sql = "INSERT INTO SALAS(id_mus,nombre_sala,cuerpo_sala) VALUES(".
 					$sala->getId_mus().
 				",'".$sala->getNombre_sala().
+				"','".$sala->getCuerpo_sala().
 				"')";
 
 			$val = $con->query($sql);
-
 			if($val){
 				/*?> <script>alert("Se agrego conectamente");</script> <?php*/
 				return $val;
@@ -34,12 +34,15 @@
 		public function actualizar($sala){
 			$con = new Conexion();
 			$con->conectar();
-			if($sala->getNombre_sala() != ""){
-				$sql = "UPDATE SALAS SET nombre_sala = '".$sala->getNombre_sala()."' where id_mus = " . $sala->getId_mus() . " and id_sala = " . $sala->getId_sala() . ";";
-				?><script>alert("<?php echo $sql;?>");</script><?php
-				$con->query($sql);
-			}
-			
+			$sql = "";
+			$sql .= ($sala->getNombre_sala() != "" ) ? "nombre_sala = '" . $sala->getNombre_sala() . "'," : "" ;
+			$sql .= ($sala->getCuerpo_sala() != "" ) ? "cuerpo_sala = '" . $sala->getCuerpo_sala() . "'," : "" ;
+
+			$sql = substr($sql , 0 , strlen($sql)-1);
+
+			$sql = "UPDATE SALAS SET " . $sql . " WHERE id_mus = " . $sala->getId_mus() . " and id_sala = " . $sala->getId_sala();
+
+			$con->query($sql);
 		}
 
 		public function listar($id){
@@ -54,7 +57,7 @@
 			$con->conectar();
 			/*$sql = "SELECT  m.nombre_mus, s.nombre_sala , d.cuerpo FROM MUSEOS m INNER JOIN (SALAS s inner join DETALLE_MUS_SAL d ON d.id_sala = s.id_sala ) ON d.id_mus = m.id_mus WHERE m.id_mus =". $_REQUEST['id']. ";";*/
 			
-			$sql = "select id_sala,id_mus,nombre_sala from SALAS where id_mus = " . $id .";";
+			$sql = "select id_sala,id_mus,nombre_sala,cuerpo_sala from SALAS where id_mus = " . $id .";";
 			
 			$lista = $con->query($sql);
 
@@ -62,7 +65,7 @@
 			
 			while($dato = mysqli_fetch_array($lista)){
 				$sala[$i]= new Sala();
-				$sala[$i]->iniciar($dato[1],$dato[2]);
+				$sala[$i]->iniciar($dato[1],$dato[2],$dato[3]);
 				$sala[$i]->setId_sala($dato[0]);
 				$i++;
 			}
@@ -80,13 +83,13 @@
 			$con->conectar();
 			/*$sql = "SELECT  m.nombre_mus, s.nombre_sala , d.cuerpo FROM MUSEOS m INNER JOIN (SALAS s inner join DETALLE_MUS_SAL d ON d.id_sala = s.id_sala ) ON d.id_mus = m.id_mus WHERE m.id_mus =". $_REQUEST['id']. ";";*/
 			
-			$sql = "select id_sala,id_mus,nombre_sala from SALAS where id_mus = " . $id ." and id_sala = ".$id_sal.";";
+			$sql = "select id_sala,id_mus,nombre_sala,cuerpo_sala from SALAS where id_mus = " . $id ." and id_sala = ".$id_sal.";";
 			
 			$dato = $con->query($sql);
 			$dato = mysqli_fetch_array($dato);
 			$sala = new Sala();
 			
-			$sala->iniciar($dato[1],$dato[2]);
+			$sala->iniciar($dato[1],$dato[2],$dato[3]);
 			$sala->setId_sala($dato[0]);
 			
 			return $sala;
@@ -105,7 +108,8 @@ if(isset($_REQUEST['btnReg'])){
 	
 	$sala->iniciar(
 		$_REQUEST['id'],
-		$_REQUEST['nombreSal']	
+		$_REQUEST['nombreSal'],
+		$_REQUEST['cuerpoSal']	
 	);
 
 	$status = $control->registrar($sala); //REGISTRAR
@@ -139,7 +143,7 @@ if(isset($_REQUEST['btnReg'])){
 
 	$control = new CtrlSala();
 	$sala = new Sala();
-	$sala->iniciar($_REQUEST['id'],$_REQUEST['nombreSal']);
+	$sala->iniciar($_REQUEST['id'],$_REQUEST['nombreSal'],$_REQUEST['cuerpoSal']);
 	$sala->setId_sala($_REQUEST['idsal']);
 	$control->actualizar($sala);
 	?><script> window.location="../vista/administrador/gestionarSalas.php?id=<?php echo $sala->getId_mus(); ?>"; </script><?php

@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>ACEM -- MUSEOS</title>
 </head>

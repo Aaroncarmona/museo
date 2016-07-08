@@ -70,7 +70,12 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='submit' name="btnReg" value='Registrar Sala' />
+											<textarea rows="10" placeholder='Cuerpo..' cols="50" name='cuerpoSal' id='cuerpoSal'></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='submit' name="btnReg" value='Registrar' />
 										</td>
 									</tr>
 								</table>
@@ -92,7 +97,12 @@
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Nombre: <?php echo $lista->getNombre_sala(); ?></span>
+											<span class="txtBorrar"><?php echo "<strong>" ?>Nombre: <?php echo "</strong>" .$lista->getNombre_sala(); ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar"><?php echo "<strong>" ?> Cuerpo: <?php echo "</strong> <br>" .substr($lista->getCuerpo_sala() , 0 , 40 ) . "...."; ?></span>
 										</td>
 									</tr>
 									<tr>
@@ -133,6 +143,11 @@
 									</tr>
 									<tr>
 										<td>
+											<textarea rows="10" placeholder='Cuerpo: <?php echo $lista->getCuerpo_sala(); ?>' cols="50" name='cuerpoSal' id='cuerpoSal'></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
 											<input type='submit' name="modSala" value='Modificar'/>
 										</td>
 									</tr>
@@ -156,7 +171,8 @@
 				</tr>
 				<tr>
 					<th>Sala</th>
-					<th colspan="3">Accion</th>
+					<th>Contenido</th>
+					<th colspan="2">Accion</th>
 				</tr>
 
 				<!--consulta -->
@@ -169,13 +185,13 @@
 
 						 ?>
 						<tr>
-							<td><?php echo $salas[$key]->getNombre_Sala(); ?> </td>
+							<td><?php echo $salas[$key]->getNombre_sala(); ?> </td>
+							<td><?php echo substr($salas[$key]->getCuerpo_sala(), 0 , 20) . "....."; ?> </td>
 							
 							<td class="btnAccion">
 								<a href="gestionarSalas.php?accion=b&id=<?php echo $salas[$key]->getId_mus();?>&idsal=<?php echo $salas[$key]->getId_sala();?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
-							
 							</td>
 							
 							<td class="btnAccion">
@@ -183,6 +199,7 @@
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
 								</a>
 							</td>
+
 		           		</tr>
 						<!--consulta -->
 						<?php } //FOREACH
