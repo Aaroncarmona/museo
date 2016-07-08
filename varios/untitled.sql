@@ -119,4 +119,3 @@ create table HORARIOS(
 
 /*esto es opcional*/
 
-DROP TABLE DETALLE_MUS_SAL;
