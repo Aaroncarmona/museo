@@ -39,7 +39,7 @@
 			$this->nombre_sala = $nombre_sala;
 		}
 
-		public function setCuerpoSala($cuerpo_sala){
+		public function setCuerpo_sala($cuerpo_sala){
 			$this->cuerpo_sala = $cuerpo_sala;
 		}
 	}

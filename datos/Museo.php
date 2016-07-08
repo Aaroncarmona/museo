@@ -122,3 +122,31 @@
 	}
 
 ?>
+
+<?php
+/* 
+include('Conexion.php');
+class Museo{
+	private $id_mus;
+	private $id_del;
+	private $imagen_mus;
+	private $nombre_mus;
+	private $desc_mus;
+	private $dir_mus;
+	private $precio_mus;
+
+	public function iniciar($id_del,$imagen_mus,$nombre_mus,$desc_mus,$dir_mus,$precio_mus){
+		$this->id_del;
+		$this->imagen_mus;
+		$this->nombre_mus;
+		$this->desc_mus;
+		$this->dir_mus;
+		$this->precio_mus;
+	}
+
+	public function getImagen(){
+
+	}
+
+*/
+?>
