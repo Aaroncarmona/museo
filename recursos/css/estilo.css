@@ -38,7 +38,7 @@ header{
 header > table {
 	width: 100%;
 	text-align: center;
-	border-collapse: collapse;	
+	border-collapse: collapse;
 }
 
 .henav,.henav2{
@@ -73,7 +73,7 @@ nav#navegacion > ul > li >a{
 	padding: 0px 15px;
 	font-size: 1.5em;
 	text-shadow: rgb(0,0,100) 2px 2px 3px;
-	
+
 }
 #navegacion li a:hover{
   text-shadow: black 5px 5px 5px;
@@ -137,7 +137,7 @@ aside#lateral{
 	width:20%;
 	min-height:150px;
 
-	
+
 }
 section#principal{
 	width: 59%;
@@ -172,7 +172,7 @@ div#contenedorAdministrador{
 }
 
 div#contenedorAdministrador > aside , div#contenedorAdministrador > section{
-	vertical-align: top;	
+	vertical-align: top;
 	display: inline-block;
 	width: 75%;
 	min-height: 20px;
@@ -182,7 +182,7 @@ div#contenedorAdministrador > aside , div#contenedorAdministrador > section{
 
 div#contenedorAdministrador > aside{
 	width: 24%;
-	
+
 }
 
 #menuAdmin{
@@ -294,7 +294,7 @@ color:white;
  .icono{
  	width: 20px;
 	height:20px;
-	
+
  }
 
  /*tabla*/
@@ -335,7 +335,7 @@ color:white;
 		-webkit-box-shadow: 0 1px 2px #d1d1d1;
 		box-shadow: 0 1px 2px #d1d1d1;
 	}
-	
+
 	table.tablaAdmG th{
 		padding:21px 25px 22px 25px;
 		border-top:1px solid #fafafa;
@@ -350,7 +350,7 @@ color:white;
 		text-align: center;
 	}
 
-	
+
 
 	table.tablaAdmG tr td{
 		text-align:center;
@@ -365,11 +365,11 @@ color:white;
 		background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
 		background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 	}
-	
+
 	table.tablaAdmG tr:hover td {
 		background: #f2f2f2;
 		background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-		background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+		background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
 	}
 
 	table.tablaAdmG tr td.btnAccion:hover {
@@ -380,7 +380,7 @@ color:white;
 		background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
 		background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
 		background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(223,223,223,0) 24%, rgba(219,219,219,0) 50%, rgba(209,209,209,0) 51%, rgba(239,239,239,0) 84%, rgba(254,254,254,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );	
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 	}
 
 
@@ -411,7 +411,7 @@ color:white;
 		-webkit-box-shadow: 0 1px 2px #d1d1d1;
 		box-shadow: 0 1px 2px #d1d1d1;
 	}
-	
+
 	table.tablafrm th{
 		padding:21px 25px 22px 25px;
 		border-top:1px solid #fafafa;
@@ -437,7 +437,7 @@ color:white;
 	table.tablafrm tr td input{
 		width: 98%;
 		padding: 15px 0px;
-		font-size: 12px;	
+		font-size: 12px;
 	}
 
 	table.tablafrm tr td textarea{
@@ -457,7 +457,7 @@ color:white;
 	border-collapse: collapse;
   	text-align:left;
   	margin:0px auto;
-  	margin-bottom: 15px; 	
+  	margin-bottom: 15px;
   	width: 100%;
 }
 
@@ -467,7 +467,7 @@ table.tabla  tr  td{
 }
 
 td.tdMuseoImg {
-	width: 200px;	
+	width: 200px;
 }
 
 
@@ -504,15 +504,15 @@ background.color:white;
 .museos{
 	float: left;
 	width:100%;
-	height:100px; 
+	height:100px;
 }
 .ec-stars-wrapper {
-	/* Espacio entre los inline-block (los hijos, los `a`) 
+	/* Espacio entre los inline-block (los hijos, los `a`)
 	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
 	float: left;
 	font-size: 0;
-	/* Podríamos quitarlo, 
-		pero de esta manera (siempre que no le demos padding), 
+	/* Podríamos quitarlo,
+		pero de esta manera (siempre que no le demos padding),
 		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
 		también se esté haciendo hover a alguna estrella */
 	display: inline-block;
@@ -543,12 +543,12 @@ div.grafica{
 }
 
 #container, #sliders {
-    min-width: 310px; 
+    min-width: 310px;
     max-width: 800px;
     margin: 0 auto;
 }
 #container {
-    height: 400px; 
+    height: 400px;
 }
 /*EVALUCAIONES-- AARON CARMONA*/
 
@@ -568,6 +568,7 @@ video.vidMuseo{
 	width: 100%;
 }
 
+span.blue{color: blue;}
 span.txtBorrar{
 	font-size: 1.5em;
 }

@@ -99,7 +99,7 @@
                                             <select name="tipoEmp" id="tipoEmp">
                                                 <option value='0' >Selecciona un rol..</option>
                                             <?php
-                                                $list = $control->listarEmp();
+                                                $list = $control->listarTipoEmpleado();
                                                 foreach ($list as $key => $value) {
                                                     echo '
                                                         <option value="'.$list[$key]->getId_temp() .'">'. $list[$key]->getTipo_emp() .'</option>
@@ -123,6 +123,7 @@
 					case 'b':
 
 						$lista = $control->listarEmpleadoId($_REQUEST['id']);
+						$datos = $control->mostrarTipoEmpleadoId($_REQUEST['id']);
 
 						?>
 							<form action="../../control/CtrlEmpleado.php">
@@ -134,27 +135,37 @@
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Nombre: <?php echo $lista->getNombre_emp(); ?></span>
+											<span class="txtBorrar"><strong>Nombre:</strong> <?php echo $lista->getNombre_emp(); ?></span>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Apellido P: <?php echo $lista->getApellido_pat(); ?></span>
+											<span class="txtBorrar"><strong>Apellido P:</strong> <?php echo $lista->getApellido_pat(); ?></span>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Apellido M: <?php echo $lista->getApellido_mat(); ?></span>
+											<span class="txtBorrar"><strong>Apellido M:</strong> <?php echo $lista->getApellido_mat(); ?></span>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Telefono: <?php echo $lista->getTelefono_emp(); ?></span>
+											<span class="txtBorrar"><strong>Telefono:</strong> <?php echo $lista->getTelefono_emp(); ?></span>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<span class="txtBorrar">Correo: <?php echo $lista->getCorreo_emp(); ?></span>
+											<span class="txtBorrar"><strong>Correo:</strong> <span class="blue"><?php echo $lista->getCorreo_emp(); ?></span></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar"><strong>Fecha Registro</strong> <?php echo $datos[1]; ?></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="txtBorrar"><strong>Rol:</strong> <?php echo $datos[0]; ?></span>
 										</td>
 									</tr>
 									<tr>
