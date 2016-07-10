@@ -4,6 +4,7 @@
 	if(!isset($_SESSION['correo'])){
 ?>
 <head>
+	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>ACEM -- Evalucaciones</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -18,7 +19,7 @@
 				<td class="henav" style="background : #2b8f79;border-radius: 0px 25px 25px 0px;"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
 				<td class="henav">
-					
+
 				</td>
 			</tr>
 			</table>
@@ -47,7 +48,7 @@
 			  <fieldset>
 			    <legend>Filtros de busqueda</legend>
 				<input type="checkbox" id="filtro" value="edad" onclick="mostrar()">Edad
-				<input type="checkbox" id="filtro2" value="visitante" onclick="mostrar()">Visitante <br>Tipo de visitante 
+				<input type="checkbox" id="filtro2" value="visitante" onclick="mostrar()">Visitante <br>Tipo de visitante
 				<select name="Tvi" id="Tvi">
 					<option value="1">Estudiante</option>
 				</select>
@@ -57,7 +58,7 @@
 			<div id="container"></div>
 		</section>
 	</div>
-	
+
 		<footer id="pie">
 		<p><i>Derechos Reservados©2016 EagleCode</i></p>
 	</footer>

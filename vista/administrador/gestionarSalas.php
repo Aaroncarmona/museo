@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 
 	if(!isset($_SESSION['correo'])){
@@ -9,12 +9,13 @@
 		</script>
 		<?php
 	}else{
-		
+
 		include("../../control/CtrlSala.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>ACEM -- SALAS</title>
 </head>
@@ -25,7 +26,7 @@
 				<td class="henav"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
 				<td class="henav2">
-					
+
 				</td>
 			</tr>
 			</table>
@@ -46,11 +47,11 @@
 					<a href="../../index.html">Cerrar Session</a>
 				</li>
 			</ul>
-		</aside>	
+		</aside>
 		<section id="principal">
 			<h1>Administracion de Salas</h1>
 			<br><hr>
-			<?php 
+			<?php
 				$control = new CtrlSala();
 				if(isset($_REQUEST['accion'])){
 					switch($_REQUEST['accion']){
@@ -122,11 +123,11 @@
 						case 'm':
 
 						$lista = $control->listarSalaId($_REQUEST['id'],$_REQUEST['idsal']);
-						
+
 						?>
 
 						<form action="../../control/CtrlSala.php">
-								
+
 								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
 								<input type="hidden" name="idsal" id="idsal" value='<?php echo $_REQUEST['idsal'] ?>'/>
 
@@ -165,7 +166,7 @@
 				<tr>
 					<th colspan="7" id="estAgre">
 						<a href="gestionarSalas.php?accion=a&id=<?php echo $_REQUEST['id']?>">
-							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
+							<img class="icono" src="../../recursos/imagenes/agregar.png">
 						</a>
 					</th>
 				</tr>
@@ -176,7 +177,7 @@
 				</tr>
 
 				<!--consulta -->
-						<?php 
+						<?php
 						if($salas[0] == null){
 							echo "<td colspan = '4'>No existen registros</td>";
 
@@ -187,13 +188,13 @@
 						<tr>
 							<td><?php echo $salas[$key]->getNombre_sala(); ?> </td>
 							<td><?php echo substr($salas[$key]->getCuerpo_sala(), 0 , 20) . "....."; ?> </td>
-							
+
 							<td class="btnAccion">
 								<a href="gestionarSalas.php?accion=b&id=<?php echo $salas[$key]->getId_mus();?>&idsal=<?php echo $salas[$key]->getId_sala();?>">
 									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 								</a>
 							</td>
-							
+
 							<td class="btnAccion">
 								<a href="gestionarSalas.php?accion=m&id=<?php echo $salas[$key]->getId_mus();?>&idsal=<?php echo $salas[$key]->getId_sala();?>">
 									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
@@ -208,9 +209,9 @@
 			<?php } ?>
 		</section>
 
-	
+
 	</div>
-	
+
 		<footer id="pie">
 		<i>Derechos Reservados©2016 EagleCode</i>
 	</footer>

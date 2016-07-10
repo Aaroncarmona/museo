@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
-
+	<link rel="icon" type="image/png" href="../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../recursos/css/estilo.css">
 		<title>ACEM </title>
 </head>
@@ -19,7 +19,7 @@
 					<h1 id="tituloH1Header">ACEM</h1>
 					<h4>Aplicacion para la Consulta y Evaluacion de Museos</h4>
 				</td>
-				
+
 				<td class="henav2">
 					<!--PARA QUE EL TEXTO SE QUEDE ENMEDIO-->
 				</td>
@@ -57,7 +57,7 @@
 							<input type="email" name="correo" id="correo" placeholder="Correo electorinico.." required autofocus />
 						</td>
 					</tr>
-				
+
 					<tr>
 						<td class="dato">
 							<input type="password" name="contra" id="contra" placeholder="Contraseña..." required>
@@ -85,7 +85,7 @@
 	</div>
 
 	<footer id="pie">
-		<i>Derechos Reservados©2016 EagleCode</i> 
+		<i>Derechos Reservados©2016 EagleCode</i>
 	</footer>
 
 </body>

@@ -1,4 +1,4 @@
-﻿<?php 
+﻿<?php
 	session_start();
 	if(!isset($_SESSION['correo'])){
 		?>
@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>El buscando el chido de museos</title>
 </head>
@@ -22,7 +23,7 @@
 				<td class="henav"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
 				<td class="henav2">
-					
+
 				</td>
 			</tr>
 			</table>
@@ -35,14 +36,14 @@
 	<div id="contenedorAdministrador">
 
 		<aside>
-			
+
 			<ul id="menuAdmin">
 				<li><a href="gestionarMuseos.php">Gestionar Museos</a></li>
 				<li><a href="gestionarEmpleados.php">Gestionar empleados</a></li>
 				<li><a href="estadistica.php">Ver estadisticas</a></li>
 				<li><a href="../../index.html">Cerrar Session</a></li>
 			</ul>
-		</aside>	
+		</aside>
 		<section id="principal">
 			<h1>Bienvenido Administrador</h1>
 			<br/> <hr/> <br/>
@@ -57,9 +58,9 @@
 
 		</section>
 
-	
+
 	</div>
-	
+
 		<footer id="pie">
 		<i>Derechos Reservados©2016 EagleCode</i>
 	</footer>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 
 	if(!isset($_SESSION['correo'])){
@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>ACEM -- EMPLEADOS</title>
 </head>
@@ -24,7 +25,7 @@
 				<td class="henav"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
 				<td class="henav2">
-					
+
 				</td>
 			</tr>
 			</table>
@@ -43,12 +44,12 @@
 				<li><a href="estadistica.php">Ver estadistica</a></li>
 				<li><a href="../../index.html">Cerrar Session</a></li>
 			</ul>
-		</aside>	
+		</aside>
 		<section id="principal">
 			<h1>Administracion de Empleados</h1>
 			<br><hr>
 			<?php
-				$control = new CtrlEmpleado();				
+				$control = new CtrlEmpleado();
 				if(isset($_REQUEST['accion'])){
 					switch($_REQUEST['accion']){
 						case 'a':
@@ -99,12 +100,12 @@
                                                 <option value='0' >Selecciona un rol..</option>
                                             <?php
                                                 $list = $control->listarEmp();
-                                                foreach ($list as $key => $value) { 
+                                                foreach ($list as $key => $value) {
                                                     echo '
                                                         <option value="'.$list[$key]->getId_temp() .'">'. $list[$key]->getTipo_emp() .'</option>
                                                     ';
                                                 }
-                                                
+
                                             ?>
                                             </section>
                                         </td>
@@ -120,7 +121,7 @@
 						<?php
 						break;
 					case 'b':
-						
+
 						$lista = $control->listarEmpleadoId($_REQUEST['id']);
 
 						?>
@@ -172,7 +173,7 @@
 					case 'm':
 
 						$lista = $control->listarEmpleadoId($_REQUEST['id']);
-						
+
 						?>
 
 						<form action="../../control/CtrlEmpleado.php">
@@ -239,7 +240,7 @@
 				<tr>
 					<th colspan="6" id="estAgre">
 						<a href="gestionarEmpleados.php?accion=a">
-							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
+							<img class="icono" src="../../recursos/imagenes/agregar.png">
 						</a>
 					</th>
 				</tr>
@@ -250,7 +251,7 @@
 					<th colspan="3">Accion</th>
 				</tr>
 				<?php
-				foreach ($emp as $key => $value) { 
+				foreach ($emp as $key => $value) {
 				?>
 				<tr>
 					<td><?php echo $emp[$key]->getNombre_emp(); ?></td>
@@ -272,9 +273,9 @@
 			<?php } ?>
 		</section>
 
-	
+
 	</div>
-	
+
 		<footer id="pie">
 		<i>Derechos Reservados©2016 EagleCode</i>
 	</footer>
