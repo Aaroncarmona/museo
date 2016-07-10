@@ -100,23 +100,4 @@ create table EVALUACIONES(
 
 /*POR SI VA LO DE LOS HORARIOS*/
 
-
-create table DIAS(
-	id_dia int(1) not null AUTO_INCREMENT,
-	dia varchar(20) not null,
-	primary key(id_dia)
-);
-
-create table HORARIOS(
-	id_horario int(2) not null AUTO_INCREMENT,
-	id_dia int(1) not null,
-	id_mus int(2) not null,
-	hora_in time not null,
-	hora_fn time not null,
-	primary key(id_horario),
-	foreign key(id_dia) references DIAS(id_dia),
-	foreign key(id_mus) references MUSEOS(id_mus)
-);
-
 /*esto es opcional*/
-

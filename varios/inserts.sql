@@ -60,13 +60,6 @@ insert into TIPO_VISITANTE(tipo_tvis) values(' Viejo');
 insert into TIPO_EMPLEADO(tipo_emp) values('Admin');
 insert into TIPO_EMPLEADO(tipo_emp) values('Empleado');
 
-insert into DIAS(dia) values('Lunes');
-insert into DIAS(dia) values('Martes');
-insert into DIAS(dia) values('Miercoles');
-insert into DIAS(dia) values('Jueves');
-insert into DIAS(dia) values('Vienres');
-insert into DIAS(dia) values('Sabado');	
-insert into DIAS(dia) values('Domingo');
 
 insert into MUSEOS(id_del,imagen_mus,nombre_mus,desc_mus,dir_mus,precio_mus) values(1,'museos.museo.png','El chido','klajsdklfjaksldjfkaldjfkaj','kjadjlkajdf',200);
 
