@@ -40,6 +40,12 @@
 	<div id="contenedor">
 
 		<section id="principal">
+            <?php
+            if(isset($_REQUEST['sesion'])){
+                if($_REQUEST['sesion'] == "close" ){
+                    echo "salir";
+                }
+            }else{ ?>
 			<form  action="../control/CtrlInicioSesion.php">
 				<table  class ="iniciarSesion">
 					<tr>
@@ -73,6 +79,7 @@
 					</tr>
 				</table>
 			</form>
+            <?php } ?>
 		</section>
 
 	</div>
@@ -83,4 +90,3 @@
 
 </body>
 </html>
-

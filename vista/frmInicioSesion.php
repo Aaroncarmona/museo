@@ -11,7 +11,7 @@
 		<table>
 			<tr>
 				<td class="henav">
-					<a href="index.html">
+					<a href="../index.html">
 						<img id="logo" src="../recursos/imagenes/logo/logo.png">
 					</a>
 				</td>

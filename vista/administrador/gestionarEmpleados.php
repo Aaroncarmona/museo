@@ -80,7 +80,7 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='number' name='telefono' id='telefono' placeholder='Telefono..' required/>
+											<input type='tel' name='telefono' id='telefono' pattern="^[1-9]{1}[0-9]*$" placeholder='Telefono..' required/>
 										</td>
 									</tr>
 									<tr>
@@ -90,9 +90,25 @@
 									</tr>
 									<tr>
 										<td>
-											<input type='text' name='contrasena' id='contrasena' placeholder='Contrasena..' required/>
+											<input type='password' name='contrasena' id='contrasena' placeholder='Contrasena..' required/>
 										</td>
 									</tr>
+                                    <tr>
+                                        <td>
+                                            <select name="tipoEmp" id="tipoEmp">
+                                                <option value='0' >Selecciona un rol..</option>
+                                            <?php
+                                                $list = $control->listarEmp();
+                                                foreach ($list as $key => $value) { 
+                                                    echo '
+                                                        <option value="'.$list[$key]->getId_temp() .'">'. $list[$key]->getTipo_emp() .'</option>
+                                                    ';
+                                                }
+                                                
+                                            ?>
+                                            </section>
+                                        </td>
+                                    </tr>
 									<tr>
 										<td>
 											<input type='submit' name="regEmpleado" value='Dar de alta'/>
@@ -105,7 +121,7 @@
 						break;
 					case 'b':
 						
-						$lista = $control->listarId($_REQUEST['id']);
+						$lista = $control->listarEmpleadoId($_REQUEST['id']);
 
 						?>
 							<form action="../../control/CtrlEmpleado.php">
@@ -155,7 +171,7 @@
 						break;
 					case 'm':
 
-						$lista = $control->listarId($_REQUEST['id']);
+						$lista = $control->listarEmpleadoId($_REQUEST['id']);
 						
 						?>
 
@@ -217,7 +233,7 @@
 						break;
 					}
 				}else{
-					$emp = $control->listar();
+					$emp = $control->listarEmpleado();
 			?>
 			<table class="tablaAdmG">
 				<tr>

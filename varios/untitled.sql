@@ -23,10 +23,11 @@ create table EMPLEADOS(
 );
 
 
-create table DETALLE_TIPO_EMPLEADOS(
+create or replace table DETALLE_TIPO_EMPLEADOS(
 	id_emp int(2) not null,
 	id_temp int(1) not null,
-	fecha date not null,/*se agrego*/
+	fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    primary key(id_emp,id_temp),
 	foreign key (id_emp) references EMPLEADOS(id_emp),
 	foreign key (id_temp) references TIPO_EMPLEADO(id_temp)
 );
