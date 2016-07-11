@@ -11,7 +11,7 @@
 		<table>
 			<tr>
 				<td class="henav">
-					<a href="../index.html">
+					<a href="../index.php">
 						<img id="logo" src="../recursos/imagenes/logo/logo.png">
 					</a>
 				</td>
@@ -28,7 +28,7 @@
 		<nav id="navegacion">
 			<ul>
 				<li>
-					<a href="../index.html">Inicio
+					<a href="../index.php">Inicio
 						<img class="icono"src="../recursos/imagenes/home.png">
 					</a>
 				</li>

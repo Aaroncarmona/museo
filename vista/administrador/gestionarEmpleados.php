@@ -22,7 +22,7 @@
 	<header>
 		<table>
 			<tr>
-				<td class="henav"><a href="index.html"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
+				<td class="henav"><a href="index.php"><img id="logo" src="../../recursos/imagenes/logo/logo.png"></a></td>
 				<td><h1 id="tituloH1Header">ACEM</h1><h4>Aplicacion para la Consulta y Evaluacion de Museos</h4></td>
 				<td class="henav2">
 
@@ -42,7 +42,7 @@
 				<li><a href="inicioAdministrador.php">Inicio Administrador</a></li>
 				<li><a href="gestionarMuseos.php">Gestionar Museos</a></li>
 				<li><a href="estadistica.php">Ver estadistica</a></li>
-				<li><a href="../../index.html">Cerrar Session</a></li>
+				<li><a href="../../index.php">Cerrar Session</a></li>
 			</ul>
 		</aside>
 		<section id="principal">
