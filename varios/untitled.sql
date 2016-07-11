@@ -86,14 +86,17 @@ create table ESTADOS(
 
 create table EVALUACIONES(
 	id_ev  int(4) not null AUTO_INCREMENT,
+	id_tvis int(1) not null,
+	id_est int(2) not null,
+	id_mus int(2) not null,
 	puntaje_ev int(1) not null,
 	opinion_ev varchar(255) not null,
 	sexo varchar(1) not null,
-	id_tvis int(1) not null,
-	id_est int(2) not null,
 	primary key(id_ev),
 	foreign key(id_tvis) references TIPO_VISITANTE(id_tvis),
-	foreign key(id_est) references ESTADOS(id_est)
+	foreign key(id_est) references ESTADOS(id_est),
+	foreign key(id_mus) references MUSEOS(id_mus)
+
 );
 
 

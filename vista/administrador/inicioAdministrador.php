@@ -14,7 +14,7 @@
 <head>
 	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
-	<title>El buscando el chido de museos</title>
+	<title>ACEM -- INICIO</title>
 </head>
 <body>
 	<header>
