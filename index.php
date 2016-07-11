@@ -62,78 +62,27 @@
 	<hr/>
 	</aside>
 
-		<section id="principal">
-           Museos ....
-           <table class="tabla">
-           	<tr>
-           		<td class="tdMuseoImg">
-           			<img class="museos" src="recursos/imagenes/museos/mide.jpg">
-           		</td>
-           		<td class="tdMuseo">
-           			<h4><a href="">Museo Interactivo de economia (MIDE)...</a></h4>
-           			<p>Horario: Cierra pronto · 09–18</p>
-              		<p>Teléfono: 01 55 5130 4600</p>
-        				<div class="ec-stars-wrapper">
-							<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-							<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-							<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-							<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-							<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-						</div>
-				</td>
-			</tr>
+	<section id="principal">
+		<h1>Museo</h1>
+		<br/><hr/><br/>
+		<table class="tabla">
 			<tr>
-				<td>
-					<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
- 					<img class="museos" src="recursos/imagenes/museos/universum.jpg"></td>
- 				<td>
-           			<p><strong>Universum...</strong>
-       	  			<p>Horario:09–18</p>
-   					<p>Teléfono: 01 55 5622 7260</p>
-        			<div class="ec-stars-wrapper">
-						<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-						<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-						<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-						<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-						<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+				<td class="tdMuseoImg">
+					<img class="museos" src="recursos/imagenes/museos/MIDE/mide.jpg">
+				</td>
+				<td class="tdMuseo">
+					<h4><a href="">Museo Interactivo de economia (MIDE)...</a></h4>
+					<p>Horario: Cierra pronto · 09–18</p>
+					<p>Teléfono: 01 55 5130 4600</p>
+					<div class="ec-stars">
+						<a href="#" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="#" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="#" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="#" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="#" title="Votar con 5 estrellas">&#9733;</a>
 					</div>
 				</td>
 			</tr>
-			<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
-			<tr>
-				<td>
- 					<img class="museos" src="recursos/imagenes/museos/electricidad.jpg"></td>
-          		<td><p><strong>Museo de la electricidad (MUTEC)...</strong>
-           			<p>Horario:Lunes a domingo 09–18</p>
-       				<p>Teléfono: 01 55 5729 6000</p>
-       				<div class="ec-stars-wrapper">
-						<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-						<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-						<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-						<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-						<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-					</div>
-				</td>
-			</tr>
-			<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
-			<tr>
-				<td>
-					<img class="museos" src="recursos/imagenes/museos/papalote.jpg">
-				</td>
-     			<td>
-         			<p><strong>Papalote museo del niño...</strong>
-           			<p>Horario: lunes a domingo	10–19</p>
-       				<p>Teléfono:01 55 5237 1773</p>
-        			<div class="ec-stars-wrapper">
-						<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-						<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-						<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-						<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-						<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-					</div>
-				</td>
-			</tr>
-			<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
 		</table>
 	</section>
 	</div>

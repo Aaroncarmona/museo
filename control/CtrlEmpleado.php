@@ -4,42 +4,42 @@
 
 		/*SE REGISTRA Y EN CASO QUE SI SE REGRESA UNA VALIDACION*/
 		public function registrarEmpleado($emp,$temp){
-    	include("../datos/Detalle_tipo_empleados.php");
+	    	include("../datos/Detalle_tipo_empleados.php");
 
-      $dte = new Detalle_tipo_empleados();
-			$con = new Conexion();
+	      $dte = new Detalle_tipo_empleados();
+				$con = new Conexion();
 
-			$con->conectar();
+				$con->conectar();
 
-			$empSql = "insert into EMPLEADOS(nombre_emp,apellido_pat,apellido_mat,telefono_emp,correo_emp,contra_emp)
-				values('". $emp->getNombre_emp() .
-				"','" . $emp->getApellido_pat() .
-				"','" . $emp->getApellido_mat() .
-				"','" . $emp->getTelefono_emp() .
-				"','" . $emp->getCorreo_emp().
-				"','" . $emp->getContra_emp()."');";
+				$empSql = "insert into EMPLEADOS(nombre_emp,apellido_pat,apellido_mat,telefono_emp,correo_emp,contra_emp)
+					values('". $emp->getNombre_emp() .
+					"','" . $emp->getApellido_pat() .
+					"','" . $emp->getApellido_mat() .
+					"','" . $emp->getTelefono_emp() .
+					"','" . $emp->getCorreo_emp().
+					"','" . $emp->getContra_emp()."');";
 
-        $valEmp = $con->query($empSql);//PRIMERO SE AGREGA PARA SER BUSCADO
+	        $valEmp = $con->query($empSql);//PRIMERO SE AGREGA PARA SER BUSCADO
 
-        $dteSql = "insert into
-        DETALLE_TIPO_EMPLEADOS(id_emp,id_temp)
-        values(".$this->obtenerEmpleadoId($emp).",".$temp->getId_temp().")";
+	        $dteSql = "insert into
+	        DETALLE_TIPO_EMPLEADOS(id_emp,id_temp)
+	        values(".$this->obtenerEmpleadoId($emp).",".$temp->getId_temp().")";
 
 
-        $valDte = $con->query($dteSql);
+	        $valDte = $con->query($dteSql);
 
-        $val = $valEmp && $valDte;
+	        $val = $valEmp && $valDte;
 
-			if($val){
-				/*?> <script>alert("Se agrego conectamente");</script> <?php*/
-				return $val;
-			}else{
-				?><script>alert("Ya existe ese registro");</script><?php
+				if($val){
+					/*?> <script>alert("Se agrego conectamente");</script> <?php*/
+					return $val;
+				}else{
+					?><script>alert("Ya existe ese registro");</script><?php
+				}
+
 			}
 
-		}
-
-    public function obtenerEmpleadoId($emp){
+	    public function obtenerEmpleadoId($emp){
 			$con = new Conexion();
 			$con->conectar();
 			$sql = 'select id_emp from EMPLEADOS where correo_emp like "'. $emp->getCorreo_emp() .'";';
