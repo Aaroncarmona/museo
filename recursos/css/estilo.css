@@ -134,11 +134,11 @@ section, aside {
 }
 
 aside#lateral{
-	width:20%;
 	min-height:150px;
-
-
+	margin-bottom: 15px;
+	width: 25%;/en caso para agregar una imagen**/
 }
+
 section#principal{
 	width: 59%;
 	padding-top: 0px;
@@ -571,4 +571,28 @@ video.vidMuseo{
 span.blue{color: blue;}
 span.txtBorrar{
 	font-size: 1.5em;
+}
+
+/*estilo del visitante*/
+div.info_vis{
+	width: 100%;
+}
+
+div.info_vis > hr{
+	width: 100%;
+}
+
+div.info_vis > img{
+	width: 100%;
+}
+
+div.info_vis > h1{
+	background-color: #2b8f79;
+	color: white;
+	border: 1px solid black;
+	padding: 15px 0px;
+}
+
+div.info_vis > p{
+
 }
