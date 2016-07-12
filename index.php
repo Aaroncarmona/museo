@@ -65,25 +65,48 @@
 	<section id="principal">
 		<h1>Museo</h1>
 		<br/><hr/><br/>
-		<table class="tabla">
-			<tr>
-				<td class="tdMuseoImg">
-					<img class="museos" src="recursos/imagenes/museos/MIDE/mide.jpg">
-				</td>
-				<td class="tdMuseo">
-					<h4><a href="">Museo Interactivo de economia (MIDE)...</a></h4>
-					<p>Horario: Cierra pronto · 09–18</p>
-					<p>Teléfono: 01 55 5130 4600</p>
-					<div class="ec-stars">
+		
+		<?php
+			include("control/CtrlMuse.php");
+			$control = new CtrlMuse();
+
+			$list = $control->listarMuseo();
+
+			foreach ($list as $key => $value) {
+				
+		?>
+		<div class="vis-bus-contenedor">
+			<div class="vis-bus-titulo">
+				<h2><a href="vista/verMuseo.php?id=<?php echo $list[$key][0] ?>"><?php echo $list[$key][2] ?></a></h2>
+			</div>
+
+			<div class="vis-bus-img">
+				<img src="recursos/imagenes/museos/<?php echo $list[$key][2]?>/<?php echo $list[$key][1]?>">
+			</div>
+
+			<div class="vis-bus-textCon">
+				<div class="vis-bus-text">
+					<p>
+						<?php echo $list[$key][5]?>
+					</p>
+				</div>
+				<hr class="hr-100">
+				Puntuacion<br/>
+				<div class="ec-stars">
 						<a href="#" title="Votar con 1 estrellas">&#9733;</a>
 						<a href="#" title="Votar con 2 estrellas">&#9733;</a>
 						<a href="#" title="Votar con 3 estrellas">&#9733;</a>
 						<a href="#" title="Votar con 4 estrellas">&#9733;</a>
 						<a href="#" title="Votar con 5 estrellas">&#9733;</a>
-					</div>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+
+			<div class="vis-bus-evaluar">
+				<a href="vista/verMuseo.php"><img src="#" alt="evaluar"></a>
+			</div>
+			
+		</div>
+		<?php } ?>
 	</section>
 	</div>
 	<footer id="pie">

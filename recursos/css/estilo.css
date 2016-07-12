@@ -19,6 +19,10 @@ hr{
 	margin: 0px auto;
 }
 
+hr.hr-100{
+	width: 100%;
+}
+
 p , span{
 	margin:10px;
 	text-align: left;
@@ -143,6 +147,7 @@ section#principal{
 	width: 59%;
 	padding-top: 0px;
 	margin-left: 70px;
+	margin-bottom: 15px;
 
 }
 
@@ -453,6 +458,7 @@ color:white;
 
  /*tabla*/
  /*tabla frm*/
+ /*
  table.tabla{
 	border-collapse: collapse;
   	text-align:left;
@@ -484,7 +490,61 @@ td.tdMuseo > h4 > a{
 }
 
 td.tdMuseo{
-	border-radius: 15px;
+	background: black;
+	padding-left: 15px;
+}
+*/
+
+div.vis-bus-titulo > h2 {
+	padding: 15px 0px;
+	border-bottom: 1px solid white;
+	color: white;
+}
+
+div.vis-bus-titulo > h2 > a{
+	color: black;
+	text-decoration: none;
+}
+div.vis-bus-contenedor{
+
+    background: #eaebec;
+    border-radius: 3px;
+    border: #ccc 1px solid;
+    box-shadow: 0 1px 2px #d1d1d1;
+    color: #666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 20px;
+    text-shadow: 1px 1px 0px #fff;
+	width: 100%;
+    
+    -moz-border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+}
+
+div.vis-bus-img , div.vis-bus-textCon , div.vis-bus-evaluar{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+}
+div.vis-bus-evaluar{
+	width: 10%;
+}
+div.vis-bus-textCon{
+	width: 58%;
+}
+
+div.vis-bus-text{
+
+}
+
+div.vis-bus-img > img{
+	width: 100%;
+	margin-top: 10px;
+
 }
 
 .columna{
@@ -501,12 +561,6 @@ background.color:white;
   float:center;
   color: #000000;
  }*/
-.museos{
-	float: left;
-	width:100%;
-	height:100px;
-}
-
 .ec-stars-wrapper {
 	/* Espacio entre los inline-block (los hijos, los `a`)
 	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
@@ -543,7 +597,8 @@ background.color:white;
 .ec-stars {
 	/* Espacio entre los inline-block (los hijos, los `a`)
 	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
-	float: left;
+	/*float: left;*/
+	margin: 0px auto;
 	font-size: 0;
 	/* Podríamos quitarlo,
 		pero de esta manera (siempre que no le demos padding),
@@ -558,6 +613,7 @@ background.color:white;
 	font-size: 32px;
 	font-size: 2rem;
 	color: #888;
+	cursor: default; 
 }
 
 /*
@@ -630,4 +686,24 @@ div.info_vis > h1{
 
 div.info_vis > p{
 
+}
+
+/*estilo del visitante para ver el museo*/
+div.verMuseoPrincipal{
+	background: lightgray;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+}
+
+div.verMuseoPrincipalSala{
+	width: 80%;
+	padding: 5px;
+	background: gray;
+	margin: 15px auto;
+	border-radius: 5px;
+}
+
+div.verMuseoPrincipalSala > h3 , div.verMuseoPrincipalSala > p{
+	color: white;
 }

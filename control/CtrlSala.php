@@ -46,8 +46,6 @@
 		}
 
 		public function listarSala($id){
-			include("../../datos/Conexion.php");
-			include("../../datos/Sala.php");
 			
 			$con = new Conexion();
 			$sala = null;

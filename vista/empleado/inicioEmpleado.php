@@ -47,16 +47,16 @@
 			</ul>
 		</aside>
 		<section id="principal">
-			<H2>BIENVENIDO AL EMPLEADO...</H2>
-			<br/>
+			<h2>BIENVENIDO EMPLEADO</h2>
+			<br/><hr/><br/>
             <div class="slider">
-		<ul>
-			<li><img class="galeria" src="../../recursos/imagenes/img1.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img2.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img3.jpg" alt=""></li>
-			<li><img class="galeria" src="../../recursos/imagenes/img4.jpg" alt=""></li>
-     </ul>
-		</div>
+			<ul>
+				<li><img class="galeria" src="../../recursos/imagenes/img1.png" alt=""></li>
+				<li><img class="galeria" src="../../recursos/imagenes/img2.png" alt=""></li>
+				<li><img class="galeria" src="../../recursos/imagenes/img3.png" alt=""></li>
+				<li><img class="galeria" src="../../recursos/imagenes/img4.png" alt=""></li>
+	     	</ul>
+			</div>
 
 		</section>
 

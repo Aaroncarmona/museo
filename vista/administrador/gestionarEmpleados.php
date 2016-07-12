@@ -55,7 +55,7 @@
 						case 'a':
 						/*include('../vista/administrador/Museos/agregar.php');*/
 						?>
-							<form action="../../control/CtrlEmpleado.php">
+							<form name="frmAdminRegEmp" action="../../control/CtrlEmpleado.php">
 								<table class="tablafrm" >
 									<tr>
 										<th>
@@ -126,7 +126,7 @@
 						$datos = $control->mostrarTipoEmpleadoId($_REQUEST['id']);
 
 						?>
-							<form action="../../control/CtrlEmpleado.php">
+							<form name="frmAdminEliEmp" action="../../control/CtrlEmpleado.php">
 								<table class="tablafrm" >
 									<tr>
 										<th colspan="2">
@@ -187,7 +187,7 @@
 
 						?>
 
-						<form action="../../control/CtrlEmpleado.php">
+						<form name="frmAdminModEmp" action="../../control/CtrlEmpleado.php">
 								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
 								<table class="tablafrm" >
 									<tr>
@@ -250,7 +250,7 @@
 			<table class="tablaAdmG">
 				<tr>
 					<th colspan="6" id="estAgre">
-						<a href="gestionarEmpleados.php?accion=a">
+						<a name="agregarEmpleado" href="gestionarEmpleados.php?accion=a">
 							<img class="icono" src="../../recursos/imagenes/agregar.png">
 						</a>
 					</th>
@@ -269,12 +269,12 @@
 					<td><?php echo $emp[$key]->getApellido_pat(); ?></td>
 					<td><?php echo $emp[$key]->getApellido_mat(); ?></td>
 					<td class="btnAccion">
-						<a href="gestionarEmpleados.php?accion=b&id=<?php echo $emp[$key]->getId_emp(); ?>">
+						<a name="eliminarEmpleado" href="gestionarEmpleados.php?accion=b&id=<?php echo $emp[$key]->getId_emp(); ?>">
 							<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar">
 						</a>
 					</td>
 					<td class="btnAccion">
-						<a href="gestionarEmpleados.php?accion=m&id=<?php echo $emp[$key]->getId_emp(); ?>">
+						<a name="modificarEmpleado" href="gestionarEmpleados.php?accion=m&id=<?php echo $emp[$key]->getId_emp(); ?>">
 							<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar">
 						</a>
 					</td>
