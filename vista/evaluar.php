@@ -65,43 +65,61 @@
 
 				$listMuseo = $controlMuseo->listarMuseoId($_REQUEST['id']);
 			?>
-			<div class="verMuseoPrincipal">
-				<h1><?php echo $listMuseo[2] ?></h1>
-				<hr class="hr-100">
-				<img class="imgMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo $listMuseo[1] ?>" alt="museo">
-				<p>
-					<?php echo $listMuseo[5] ?>
-				</p>
-				<video class="vidMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo substr($listMuseo[1], 0 , strpos($listMuseo[1], '.')) . '.mp4'?>" controls>
-					<p class="vis-salas-vacias">
-						El navegador no soporta el video
-					</p>
-					<code></code>
-				</video>
-				<br><img id="imgSalaDes" src="../recursos/imagenes/salas.png"/>
-				<?php 
-					$listSala = $controlSala->listarSala($_REQUEST['id']);
-					if($listSala){
-						foreach ($listSala as $key => $value) {
-						?>
-							<div class="verMuseoPrincipalSala">
-								<h3><?php echo $listSala[$key]->getNombre_sala(); ?></h3>
-								<hr class="hr-100">
-								<p>
-									<?php echo $listSala[$key]->getCuerpo_sala(); ?>
-								</p>
+			
+			<form name="frmAdminRegMus" action="../../control/CtrlEvaluar.php">
+				<table class="tablafrm" >
+					<tr>
+						<th>
+							Evaluacion del museo 
+							<br><h5>x</h5>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<select name="tvis" id="tvis" required>
+								<option value="0">Tipo de visitante</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select name="estado" id="estado">
+								<option value="0">Estado del que nos visita</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="radioButton">	
+								<input type="radio" name="rbPuntaje" value="1">1
+							 	<input type="radio" name="rbPuntaje" value="2">2
+							 	<input type="radio" name="rbPuntaje" value="3">3
+							 	<input type="radio" name="rbPuntaje" value="4">4
+							 	<input type="radio" name="rbPuntaje" value="5">5
 							</div>
-						<?php 
-						} 
-					}else{
-						?>
-							<p class="vis-salas-vacias"><strong>No hay salas registradas actualmente.</strong><br>pronto actualizaremos la pagina<p>
-						<?php
-					}?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="radioButton">
+								<input type="radio" name="rbSexo" value="h">HOMBRE
+							 	<input type="radio" name="rbSexo" value="m">MUJER
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea rows="6" placeholder='Platicanos de tu experiencia' cols="50" name='desc' id='opinion' required></textarea>
+						</td>
+					</tr>
 
-			</div>
-
-
+					<tr>
+						<td>
+							<input type='submit' name="regMuseo" value='Evaluar'/>
+						</td>
+					</tr>
+				</table>
+			</form>
 		</section>
 
 

@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<link rel="icon" type="image/png" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="../../recursos/css/estilo.css">
 	<title>ACEM -- EMPLEADOS</title>
