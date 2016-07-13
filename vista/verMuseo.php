@@ -56,6 +56,7 @@
 		<section id="principal">
 			<?php 
 				include("../control/CtrlMuse.php");
+				include("../datos/Conexion.php");
 				include("../control/CtrlSala.php");
 				include("../datos/Sala.php");
 
@@ -65,26 +66,38 @@
 				$listMuseo = $controlMuseo->listarMuseoId($_REQUEST['id']);
 			?>
 			<div class="verMuseoPrincipal">
-				<h2><?php echo $listMuseo[2] ?></h2>
+				<h1><?php echo $listMuseo[2] ?></h1>
 				<hr class="hr-100">
 				<img class="imgMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo $listMuseo[1] ?>" alt="museo">
 				<p>
 					<?php echo $listMuseo[5] ?>
 				</p>
-				
-				<?php 
-					$listSala = $controlSala->listarSala($_REQUEST['id']); 
-					foreach ($listSala as $key => $value) {
-				?>
-
-				<div class="verMuseoPrincipalSala">
-					<h3><?php echo $listSala[$key]->getNombre_sala(); ?></h3>
-					<hr class="hr-100">
-					<p>
-						<?php echo $listSala[$key]->getCuerpo_sala(); ?>
+				<video class="vidMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo substr($listMuseo[1], 0 , strpos($listMuseo[1], '.')) . '.mp4'?>" controls>
+					<p class="vis-salas-vacias">
+						El navegador no soporta el video
 					</p>
-				</div>
-				<?php } ?>
+					<code></code>
+				</video>
+				<br><img id="imgSalaDes" src="../recursos/imagenes/salas.png"/>
+				<?php 
+					$listSala = $controlSala->listarSala($_REQUEST['id']);
+					if($listSala){
+						foreach ($listSala as $key => $value) {
+						?>
+							<div class="verMuseoPrincipalSala">
+								<h3><?php echo $listSala[$key]->getNombre_sala(); ?></h3>
+								<hr class="hr-100">
+								<p>
+									<?php echo $listSala[$key]->getCuerpo_sala(); ?>
+								</p>
+							</div>
+						<?php 
+						} 
+					}else{
+						?>
+							<p class="vis-salas-vacias"><strong>No hay salas registradas actualmente.</strong><br>pronto actualizaremos la pagina<p>
+						<?php
+					}?>
 
 			</div>
 

@@ -9,8 +9,14 @@
 		</script>
 		<?php
 	}else{
+
 		include("../../datos/Museo.php");
+		include("../../control/CtrlMuse.php");
+		include("../../datos/Conexion.php");
+		
 		$museo = new Museo();
+		$ctrlMuseo = new CtrlMuse();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,60 +56,264 @@
 			<h1>Administracion de Museos</h1>
 			<br>
 			<hr>
-			<table class="tablaAdmG">
-				<tr>
-					<th colspan="6" id="estAgre">
-						<a href="../../control/CtrlMuseo.php?accion=a">
-							<img class="icono" src="../../recursos/imagenes/agregar.png"> 
-						</a>
-					</th>
-				</tr>
-				<tr>
-					<th>Museo</th>
-					<th>Imagen</th>
-					<th>Descripcion</th>
-					<th>Delegacion</th>
-					<th colspan="3">Accion</th>
-				</tr>
+			<?php
+				if(isset($_REQUEST['accion'])){ //muestra la session correspondiente
+					switch($_REQUEST['accion']){
+						case 'a':
+							?>
+							<form name="frmAdminRegMus" action="../../control/CtrlMuse.php">
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											Registrar museo
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<input type='file' name='img' id='img' accept='image/*' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombre' id='nombre' placeholder='Nombre..' required autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<select name='delegaciones' id='delegaciones' />
+											<option value='0'>Seleccione una delegacion..</option>
+												<?php
+													$list = $ctrlMuseo->listarDelegaciones();
+													while ($dato = mysqli_fetch_array($list)){
+														echo "
+															<option value='$dato[0]'>$dato[1]</option>
+														";
+													}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='dir' id='dir' placeholder='Direccion..' required/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='precio' id='precio' placeholder='Precio..' required/>
+										</td>
+									</tr>
 
-				<!--consulta -->
-				<?php 
-					$list = $museo->listar();
+									<tr>
+										<td>
+											<textarea rows="6" placeholder='Descripcion' cols="50" name='desc' id='desc' required></textarea>
+										</td>
+									</tr>
 
-						while ($datos = mysqli_fetch_array($list)) {
-						 ?>
-						 
-						<tr>
-							<td><?php echo $datos[0]; ?></td>
-							<td><img  class = "imgMus" src="../../recursos/imagenes/museos/<?php echo $datos[0]  . "/" . $datos[1]; ?>" alt = "Museo"/></td>
-							<td><?php echo substr($datos[2], 0 , 100) . "....."; ?></td>
-							<td><?php echo $datos[3]; ?> </td>
-							
-							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=b&id=<?php echo $datos[4] ?>">
-									<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar"/>
-								</a>
-							
-							</td>
-							
-							<td class="btnAccion">
-								<a href="../../control/CtrlMuseo.php?accion=m&id=<?php echo $datos[4] ?>">
-									<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar"/>
-								</a>
-							</td>
-
-							<td class="btnAccion">
-								<a href="gestionarSalas.php?id=<?php echo $datos[4] ?>">
-									<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas"/>
-								</a>
-							</td>
-		           		</tr>
-						<!--consulta -->
+									<tr>
+										<td>
+											<input type='submit' name="regMuseo" value='Dar de alta'/>
+										</td>
+									</tr>
+								</table>
+							</form>
 						<?php
-				}
+						break;
+						case 'b':
+							$lista = $ctrlMuseo->listarMuseoId($_REQUEST['id']);
+						?>
+							<form name="frmAdminEliMus" action="../../control/CtrlMuse.php">
+								<table class="tablafrm" >
+									<tr>
+										<th colspan="2">
+											Se eliminara el museo <?php echo $lista[2]; ?>
+										</th>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<br/>
+											<span class="txtBorrar">
+											<img src="../../recursos/imagenes/museos/<?php echo $lista[2] ?>/<?php echo $lista[1]; ?>"/>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<br/>
+											<span class="txtBorrar"><strong>Descripcion:</strong><br/><?php echo substr($lista[5], 0 , 100 ); ?> ...</span><br/><br/><br/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="submit" name="bajaMuseo" value="Aceptar"/>
+										</td>
+										<td>
+											<input type="submit" name="bajaMuseoCan" value="Cancelar"/>
+										</td>
+									</tr>
+								</table>
+								<input type="hidden" name="id" value="<?php echo $_REQUEST['id'] ?>" />
+							</form>
+						<?php
+						break;
+						case 'm':
 
-				?>
-			</table>
+						$lista = $ctrlMuseo->listarMuseoId($_REQUEST['id']);
+						
+						?>
+
+						<form name="frmAdminActMus" action="../../control/CtrlMuse.php" enctype="multipart/form-data">
+								<input type="hidden" name="id" id="id" value='<?php echo $_REQUEST['id'] ?>'/>
+								<table class="tablafrm" >
+									<tr>
+										<th>
+											<h2>Modificar museo</h2>
+											<h6><?php echo $lista[2]; ?></h6>
+										</th>
+									</tr>
+									<tr>
+										<td>
+											
+
+											<img  class = "imgMus-100" src="../../recursos/imagenes/museos/<?php echo $lista[2] . "/" . $lista[1]?>"/>
+											<label>Archivo actual: <?php echo $lista[1]; ?></label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											
+											<input type='file' name='img' id='img' accept='image/*'/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='nombre' id='nombre' placeholder='NOMBRE: <?php echo $lista[2]; ?>' autofocus/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<textarea rows="10" placeholder='CUERPO DE LA PAGINA: <?php echo $lista[5]; ?>' cols="50" name='desc' id='desc'></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<select name='delegaciones' id='delegaciones' />
+											<option value='<?php echo $lista[6]; ?>' >
+												<?php echo $lista[3]; ?>
+											</option>
+												<?php
+													$listaDel = $ctrlMuseo->listarDelegaciones();
+													while ($dato = mysqli_fetch_array($listaDel)) {
+														echo "
+															<option value='$dato[0]'>$dato[1]</option>
+														";
+													}
+												?>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='text' name='dir' id='dir' placeholder='DIRECCION : <?php echo $lista[7]; ?>'/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type='number' name='precio' id='precio' placeholder='PRECIO : $<?php echo $lista[4]; ?>' />
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<input type='submit' name="modMuseo" value='Modificar'/>
+										</td>
+									</tr>
+								</table>
+							</form>
+						<?php
+
+
+
+						break;
+						default:
+							?><script>
+								window.location="gestionarMuseos.php";
+							</script><?php
+						break;
+					}
+				}else{//en caso que no seleccione una accion.
+					?>
+
+
+
+
+
+
+
+<table class="tablaAdmG">
+	<tr>
+		<th colspan="6" id="estAgre">
+			<a href="gestionarMuseos.php?accion=a">
+				<img class="icono" src="../../recursos/imagenes/agregar.png"> 
+			</a>
+		</th>
+	</tr>
+	<tr>
+		<th>Museo</th>
+		<th>Imagen</th>
+		<th>Descripcion</th>
+		<th>Delegacion</th>
+		<th colspan="3">Accion</th>
+	</tr>
+
+	<!--consulta -->
+	<?php 
+		$datos = $ctrlMuseo->listarMuseo();
+
+			foreach ($datos as $key => $value) {
+			 ?>
+			 
+			<tr>
+				<td><?php echo $datos[$key][2]; ?></td>
+				<td><img  class = "imgMus" src="../../recursos/imagenes/museos/<?php echo $datos[$key][2]  . "/" . $datos[$key][1]; ?>" alt = "Museo"/></td>
+				<td><?php echo substr($datos[$key][5], 0 , 100) . "....."; ?></td>
+				<td><?php echo $datos[$key][3]; ?> </td>
+				
+				<td class="btnAccion">
+					<a href="gestionarMuseos.php?accion=b&id=<?php echo $datos[$key][0]; ?>">
+						<img class="icono" src="../../recursos/imagenes/eliminar.png" alt="eliminar"/>
+					</a>
+				
+				</td>
+				
+				<td class="btnAccion">
+					<a href="gestionarMuseos.php?accion=m&id=<?php echo $datos[$key][0]; ?>">
+						<img class="icono" src="../../recursos/imagenes/editar.png" alt="modificar"/>
+					</a>
+				</td>
+
+				<td class="btnAccion">
+					<a href="gestionarSalas.php?id=<?php echo $datos[$key][0]; ?>">
+						<img class="icono" src="../../recursos/imagenes/salas.png" alt="salas"/>
+					</a>
+				</td>
+       		</tr>
+			<!--consulta -->
+			<?php
+			}
+			?>
+		</table>
+
+
+
+
+
+
+
+
+
+					<?php
+				}
+			?>
 
 		</section>
 

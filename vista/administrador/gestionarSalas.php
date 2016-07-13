@@ -9,8 +9,9 @@
 		</script>
 		<?php
 	}else{
-
+		include("../../datos/Conexion.php");
 		include("../../control/CtrlSala.php");
+		include("../../datos/Sala.php");
 ?>
 <!DOCTYPE html>
 <html>
