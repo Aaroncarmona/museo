@@ -42,7 +42,11 @@
 
 			$sql = "UPDATE SALAS SET " . $sql . " WHERE id_mus = " . $sala->getId_mus() . " and id_sala = " . $sala->getId_sala();
 
-			$con->query($sql);
+			$estado = $con->query($sql);
+
+			if (!$estado) {
+				?><script>alert("Ya esta esa esa sala registrada");</script><?php
+			}
 		}
 
 		public function listarSala($id){
@@ -71,8 +75,6 @@
 		}
 
 		public function listarSalaId($id,$id_sal){
-			include("../../datos/Conexion.php");
-			include("../../datos/Sala.php");
 			
 			$con = new Conexion();
 
