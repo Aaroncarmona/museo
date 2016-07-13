@@ -67,16 +67,6 @@ create table SALAS(
 	foreign key(id_mus) references MUSEOS(id_mus),
 	unique(id_mus,nombre_sala)
 );
-/*
-create table DETALLE_MUS_SAL(
-	id_mus int(2) not null,
-	id_sala int(2) not null,
-	titulo varchar(30) not null,
-	cuerpo BLOB not null,
-	primary key(id_mus,id_sala),
-	foreign key(id_mus) references MUSEOS(id_mus),
-	foreign key(id_sala) references SALAS(id_sala)
-);*/
 
 create table ESTADOS(
 	id_est int(2) not null AUTO_INCREMENT,
@@ -98,9 +88,3 @@ create table EVALUACIONES(
 	foreign key(id_mus) references MUSEOS(id_mus)
 
 );
-
-
-
-/*POR SI VA LO DE LOS HORARIOS*/
-
-/*esto es opcional*/
