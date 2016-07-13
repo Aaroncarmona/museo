@@ -41,10 +41,21 @@
 
 	<div id="buscadorPrincipal">
 		<form name="frmVis-bus" id="buscar" action="#">
-			<input type="text" name="busqueda" id="busqueda" placeholder="Nombre / Delegacion "/>
+			<input type="text" name="busqueda" id="busqueda" placeholder="Nombre del museo"/>
+			<select name='delegaciones' id='delegaciones' />
+				<option value='0'>Delegacion</option>
+					<?php
+						include("datos/Conexion.php");
+						include("control/CtrlMuse.php");
+						$ctrlMuseo = new CtrlMuse();
 
-			<select name="del" id="del">
-				
+						$list = $ctrlMuseo->listarDelegaciones();
+						while ($dato = mysqli_fetch_array($list)){
+							echo "
+								<option value='$dato[0]'>$dato[1]</option>
+							";
+						}
+					?>
 			</select>
 
 			<input type="submit" name="buscar" class="subBuscar" value="Buscar" />
@@ -53,17 +64,24 @@
 
 	<div id="contenedor">
 		<aside id="lateral">
-			
+			<div class="info_vis">
+					<img src="recursos/imagenes/varios/aside.png">
+			</div>
 		</aside>
 
 	<section id="principal">
 		<?php
-			include("datos/Conexion.php");
-			include("control/CtrlMuse.php");
-			$control = new CtrlMuse();
+		$control = new CtrlMuse();
 
+		if (isset($_REQUEST['busqueda']) && $_REQUEST['busqueda'] != "") {
+			$list = $control->listarMuseoNombre($_REQUEST['busqueda']);
+		}else if (isset($_REQUEST['delegaciones']) && ($_REQUEST['delegaciones'] != "" && $_REQUEST['delegaciones'] != 0)){
+			$list = $control->listarMuseoDelegacion($_REQUEST['delegaciones']);
+		}else{
 			$list = $control->listarMuseo();
+		}
 
+		if($list){
 			foreach ($list as $key => $value) {
 				
 		?>
@@ -78,6 +96,12 @@
 
 			<div class="vis-bus-textCon">
 				<div class="vis-bus-text">
+					<p>
+						<strong>Delegacion: </strong><?php echo $list[$key][3]?> 
+					</p>
+					<p>
+						<strong>Precio: </strong>$<?php echo $list[$key][4]?> MXN
+					</p>
 					<p>
 						<?php echo substr($list[$key][5],0, 200) . "..."?> 
 					</p>
@@ -98,7 +122,11 @@
 			</div>
 			
 		</div>
-		<?php } ?>
+		<?php } 
+		}else{
+			echo "No existe algun museo con esas caracteristicas";
+		}
+		?>
 	</section>
 	</div>
 	<footer id="pie">

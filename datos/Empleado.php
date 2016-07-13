@@ -73,14 +73,5 @@
 			$this->contra_emp = $contra_emp;
 		}
 
-		/*FUNCIONALIDAD A LA BASE DE DATOS*/
-
-		public function registrar($nombre_emp,$apellido_pat,$apellido_mat,$telefono_emp,$correo_emp,$contra_emp){
-			$this->nombre_emp = $nombre_emp;
-			$this->apellido_pat = $apellido_pat;
-			$this->telefono_emp = $telefono_emp;
-			$this->correo_emp = $correo_emp;
-			$this->contra_emp = $contra_emp;
-		}
 	}
 ?>

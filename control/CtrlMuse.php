@@ -46,6 +46,47 @@
 			return $datos;
 		}
 
+		public function listarMuseoNombre($nombre){
+			$con = new Conexion();
+			$i = 0;
+			$con->conectar();
+			$datos = array();
+
+			$sql = "select m.id_mus, m.imagen_mus, m.nombre_mus, d.delegacion, m.precio_mus, m.desc_mus,m.id_del,m.dir_mus from MUSEOS m inner join DELEGACIONES d on d.id_del = m.id_del where m.nombre_mus like '%" . $nombre . "%'";
+
+			$list = $con->query($sql);
+
+			while($dato = mysqli_fetch_array($list)){
+				$datos[$i] = array($dato[0],$dato[1],$dato[2],$dato[3],$dato[4],$dato[5]);
+				$i++;
+			}
+
+			if($datos){
+				return $datos;
+			}
+		}
+
+		public function listarMuseoDelegacion($delegacion){
+			$con = new Conexion();
+			$i = 0;
+			$con->conectar();
+			$datos = array();
+
+			$sql = "select m.id_mus, m.imagen_mus, m.nombre_mus, d.delegacion, m.precio_mus, m.desc_mus,m.id_del,m.dir_mus from MUSEOS m inner join DELEGACIONES d on d.id_del = m.id_del where d.id_del =" . $delegacion;
+
+			$list = $con->query($sql);
+
+			while($dato = mysqli_fetch_array($list)){
+				$datos[$i] = array($dato[0],$dato[1],$dato[2],$dato[3],$dato[4],$dato[5]);
+				$i++;
+			}
+
+			if($datos){
+				return $datos;
+			}
+		}
+
+		
 		public function listarDelegaciones(){
 			$con = new Conexion();
 			$con->conectar();

@@ -69,8 +69,25 @@
 				<h1><?php echo $listMuseo[2] ?></h1>
 				<hr class="hr-100">
 				<img class="imgMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo $listMuseo[1] ?>" alt="museo">
+
+				<span class="purple">
+					
+					<P>
+						<strong>
+							Delegacion:
+						</strong>
+						<?php echo $listMuseo[3]; ?>
+					</P>
+					<p>
+						<strong>
+							Precio:
+						</strong> 
+						$<?php echo $listMuseo[4] ?> MXN
+					</p>
+				</span>
+				
 				<p>
-					<?php echo $listMuseo[5] ?>
+					<?php echo $listMuseo[5]; ?>
 				</p>
 				<video class="vidMus-100" src="../recursos/imagenes/museos/<?php echo $listMuseo[2] ?>/<?php echo substr($listMuseo[1], 0 , strpos($listMuseo[1], '.')) . '.mp4'?>" controls>
 					<p class="vis-salas-vacias">
