@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset=utf-8/>
+	<meta charset="utf-8"/>
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<link rel="stylesheet" type="text/css" href="recursos/css/estilo.css">
 	<title>ACEM - INDEX	</title>
@@ -27,46 +27,38 @@
 					<p><b>/</b></p>
 				</li>
 				<li>
-					<a href="quienes.html">Quienes somos  <img class="icono"src="recursos/imagenes/quienes.png"></a>
+					<a href="quienes.html">¿Quienes somos?  <img class="icono"src="recursos/imagenes/quienes.png"></a>
 				</li>
 				<li>
 					<p><b>/</b></p>
 				</li>
 				<li>
-					<a href="acem.html">Para que sirve ACEM  <img class="icono"src="recursos/imagenes/sirve.png"></a>
+					<a href="acem.html">¿Para que sirve ACEM?  <img class="icono"src="recursos/imagenes/sirve.png"></a>
 				</li>
-				<li>
-					<p><b>/</b></p>
-				</li>
-				<li>
-					<a href="evaluar.html">Evaluar  <img class="icono"src="recursos/imagenes/museo.png"></a>
-				</li>
-
-
 			</ul>
 		</nav>
 	</header>
 
 	<div id="buscadorPrincipal">
-		<form id="buscar" action="#">
+		<form name="frmVis-bus" id="buscar" action="#">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Nombre / Delegacion "/>
+
+			<select name="del" id="del">
+				
+			</select>
+
 			<input type="submit" name="buscar" class="subBuscar" value="Buscar" />
 		</form>
 	</div>
 
 	<div id="contenedor">
 		<aside id="lateral">
-			aqui van los filtros
-
-
-	<hr/>
-	</aside>
+			
+		</aside>
 
 	<section id="principal">
-		<h1>Museo</h1>
-		<br/><hr/><br/>
-		
 		<?php
+			include("datos/Conexion.php");
 			include("control/CtrlMuse.php");
 			$control = new CtrlMuse();
 
@@ -87,7 +79,7 @@
 			<div class="vis-bus-textCon">
 				<div class="vis-bus-text">
 					<p>
-						<?php echo $list[$key][5]?>
+						<?php echo substr($list[$key][5],0, 200) . "..."?> 
 					</p>
 				</div>
 				<hr class="hr-100">
@@ -102,7 +94,7 @@
 			</div>
 
 			<div class="vis-bus-evaluar">
-				<a href="vista/verMuseo.php"><img src="#" alt="evaluar"></a>
+				<a href="vista/evaluar.php?id=<?php echo $list[$key][0] ?>"><img src="vista/evaluar.php" alt="evaluar"></a>
 			</div>
 			
 		</div>
