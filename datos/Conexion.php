@@ -50,12 +50,6 @@
 			$res = mysqli_query($this->con,$query);
 			if($res){
 				return $res;
-			}else{
-				?>
-					<script>
-						alert("Problemas al ejecutar la instruccion");		
-					</script>
-				<?php
 			}
 		}
 
